@@ -1,197 +1,1261 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-
-	<!--/ /---- Put your name in the title of the page ----/ /-->
-	<title>Adyanth PES2UG23AM007</title>
-	
-	<!--/ /-------- Normalize CSS --------/ /-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
-	
-	<!--/ /-------- Google Fonts --------/ /-->
-	<!-- Add a link to google fonts here if you want them -->
-	
-	<!--/ /-------- Font Awesome --------/ /-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-	<!--/ /-------- Your Styles --------/ /-->
-	<link href="styles.css" rel="stylesheet">
-
-	<!--/ /---Put a short description for your site below. 20 words or less---/ /-->
-	<meta description="A short description for your site...">
-
-	<!--/ /-------- Needed For Mobile Devices --------/ /-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adyanth S. — Machine Learning Engineer</title>
+<meta name="description" content="Adyanth S. — AI/ML engineer building healthcare AI, LLM systems, and quantum machine learning. LoRA/QLoRA fine-tuning, multi-agent pipelines, hybrid RAG.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #08090b; color: #ece9e0; font-family: 'Space Grotesk', system-ui, sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #4de3ff; color: #08090b; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #08090b; }
+  ::-webkit-scrollbar-thumb { background: rgba(236,233,224,0.18); }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #4de3ff; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #4de3ff; outline-offset: 3px; border-radius: 2px; }
+  input, textarea, button { font-family: inherit; }
+  input::placeholder, textarea::placeholder { color: #565f6b; }
+  @media (hover: hover) and (pointer: fine) { body { cursor: none; } }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.12; } }
+  @keyframes heroUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollDot { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(15px); opacity: 0; } }
+  @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes loaderOut { to { opacity: 0; visibility: hidden; } }
+  #loader { animation: loaderOut 0.7s cubic-bezier(.7,0,.3,1) 2.4s forwards; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes spinr { to { transform: rotate(-360deg); } }
+  @keyframes scanY { from { transform: translateY(-12vh); } to { transform: translateY(112vh); } }
+  @keyframes hudPulse { 0%,100% { opacity: 0.45; } 50% { opacity: 0.85; } }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    #loader { animation-delay: 0s !important; }
+  }
+</style>
+<script src="./vendor/three.r128.min.js"></script>
 </head>
-
 <body>
-	
-    <!-- ------------------------------------------------------
-    The site is designed to be mobile first. The wrapper elements
-	are in place for when you get to desktop size to contain the 
-	content.
-    ------------------------------------------------------- -->
-    
-	<header class="primary">
-        <div class="wrapper">
-            
-			<div class="logo-container">
-				<h1>Your<br>Name<br>Portfolio</h1>
 
-				<!-- ------------------------------------------------------
-				Note that the image of the logo is linked to the home page.
-				------------------------------------------------------- -->
-				<a href="index.html"><img src="https://dummyimage.com/175/c4c4c4/fff&text=logo" alt="logo image" id="logo"></a>
-			</div>
-            
-            
-			<!-- ------------------------------------------------------
-            The navigation here is linking to the sections further down
-            the page.
-            ------------------------------------------------------- -->
-			<nav id="mainnav">
-            	<ul>
-                	<li><a href="#work">Work</a></li>
-                    <li><a href="#about-contact">About</a></li>
-                    <li><a href="#about-contact">Contact</a></li>
-                </ul>
-            </nav>
-            
+<!-- loader -->
+<div id="loader" style="position:fixed; inset:0; z-index:70; background:#08090b; display:flex; flex-direction:column; justify-content:flex-end; gap:18px; padding:40px clamp(20px,5vw,64px);">
+  <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:#4de3ff; text-transform:uppercase;">Initializing neural interface</div>
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:20px;">
+    <div id="load-label" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; color:#717a86; text-transform:uppercase;">Loading assets</div>
+    <div id="load-num" style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(64px,16vw,200px); font-weight:700; line-height:0.8; letter-spacing:-0.04em; color:#ece9e0;">000</div>
+  </div>
+  <div style="height:1px; background:rgba(236,233,224,0.14); position:relative; overflow:hidden;"><div id="load-bar" style="position:absolute; inset:0 100% 0 0; background:#4de3ff;"></div></div>
+</div>
+
+<!-- custom cursor -->
+<div id="cur-ring" style="position:fixed; top:0; left:0; width:34px; height:34px; border:1px solid rgba(236,233,224,0.5); border-radius:50%; z-index:60; pointer-events:none; transform:translate(-50%,-50%); transition:width .25s, height .25s, background-color .25s, border-color .25s; will-change:transform; mix-blend-mode:difference;"></div>
+<div id="cur-dot" style="position:fixed; top:0; left:0; width:5px; height:5px; background:#4de3ff; border-radius:50%; z-index:61; pointer-events:none; transform:translate(-50%,-50%); will-change:transform;"></div>
+
+<canvas id="neural-canvas" style="position:fixed; inset:0; width:100vw; height:100vh; z-index:0; display:block;"></canvas>
+<div style="position:fixed; inset:0; z-index:1; pointer-events:none; background:radial-gradient(125% 95% at 50% -5%, rgba(8,9,11,0) 42%, rgba(8,9,11,0.62) 100%), repeating-linear-gradient(to bottom, rgba(236,233,224,0.018) 0px, rgba(236,233,224,0.018) 1px, transparent 1px, transparent 4px);"></div>
+
+<!-- JARVIS-style HUD overlay -->
+<div id="hud" style="position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden;">
+  <svg id="hud-reticle" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" style="position:absolute; top:50%; left:50%; width:min(140vmin,1150px); height:min(140vmin,1150px); transform:translate(-50%,-50%); will-change:transform;">
+    <circle cx="400" cy="400" r="392" fill="none" stroke-width="1" data-hud-stroke style="stroke:#4de3ff; opacity:0.16; stroke-dasharray:2 17; transform-box:fill-box; transform-origin:center; animation:spin 95s linear infinite;"></circle>
+    <circle cx="400" cy="400" r="332" fill="none" stroke-width="1.5" data-hud-stroke style="stroke:#4de3ff; opacity:0.12; stroke-dasharray:72 46; transform-box:fill-box; transform-origin:center; animation:spinr 72s linear infinite;"></circle>
+    <circle cx="400" cy="400" r="258" fill="none" stroke-width="1" data-hud-stroke style="stroke:#4de3ff; opacity:0.2; stroke-dasharray:1 12; transform-box:fill-box; transform-origin:center; animation:spin 54s linear infinite;"></circle>
+    <circle cx="400" cy="400" r="182" fill="none" stroke-width="2" data-hud-stroke style="stroke:#4de3ff; opacity:0.26; stroke-dasharray:34 250; transform-box:fill-box; transform-origin:center; animation:spinr 40s linear infinite;"></circle>
+    <line x1="400" y1="40" x2="400" y2="760" stroke-width="1" data-hud-stroke style="stroke:#4de3ff; opacity:0.05;"></line>
+    <line x1="40" y1="400" x2="760" y2="400" stroke-width="1" data-hud-stroke style="stroke:#4de3ff; opacity:0.05;"></line>
+  </svg>
+  <span data-hud-border style="position:absolute; top:16px; left:16px; width:24px; height:24px; border-left:1px solid #4de3ff; border-top:1px solid #4de3ff; opacity:0.5;"></span>
+  <span data-hud-border style="position:absolute; top:16px; right:16px; width:24px; height:24px; border-right:1px solid #4de3ff; border-top:1px solid #4de3ff; opacity:0.5;"></span>
+  <span data-hud-border style="position:absolute; bottom:16px; left:16px; width:24px; height:24px; border-left:1px solid #4de3ff; border-bottom:1px solid #4de3ff; opacity:0.5;"></span>
+  <span data-hud-border style="position:absolute; bottom:16px; right:16px; width:24px; height:24px; border-right:1px solid #4de3ff; border-bottom:1px solid #4de3ff; opacity:0.5;"></span>
+  <div data-hud-bg style="position:absolute; left:0; right:0; top:0; height:1px; background:#4de3ff; opacity:0.16; animation:scanY 7.5s linear infinite;"></div>
+  <div data-hud-color style="position:absolute; top:88px; left:clamp(20px,5vw,64px); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:#4de3ff; opacity:0.5; line-height:1.85; text-transform:uppercase; animation:hudPulse 4s ease-in-out infinite;">◢ Neural Interface<br>Status · Online<br><span id="hud-stat">Nodes · — / Links · —</span></div>
+  <div data-hud-color style="position:absolute; top:50%; right:14px; transform:translateY(-50%) rotate(90deg); transform-origin:right center; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.32em; color:#4de3ff; opacity:0.38; white-space:nowrap;">NEURAL.LINK // ADYANTH-S</div>
+  <div id="hud-view" data-hud-color style="position:absolute; bottom:20px; right:56px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.26em; color:#4de3ff; opacity:0.5;">VIEW://HOME</div>
+</div>
+
+<!-- scroll progress -->
+<div id="progress" style="position:fixed; top:0; left:0; right:0; height:2px; z-index:45; background:#4de3ff; transform:scaleX(0); transform-origin:left; pointer-events:none;"></div>
+
+<!-- ambient background switcher -->
+<div id="bg-switch" style="position:fixed; left:clamp(16px,5vw,64px); bottom:20px; z-index:40; display:flex; align-items:center; gap:11px; pointer-events:auto;">
+  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; color:#565f6b; text-transform:uppercase;">Ambient</span>
+  <div style="display:flex; gap:6px;">
+    <button type="button" data-mode="FLUX" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; padding:7px 11px; background:rgba(8,9,11,0.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border:1px solid rgba(236,233,224,0.2); color:#717a86; border-radius:100px; cursor:none;">FLUX</button>
+    <button type="button" data-mode="PLASMA" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; padding:7px 11px; background:rgba(8,9,11,0.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border:1px solid rgba(236,233,224,0.2); color:#717a86; border-radius:100px; cursor:none;">PLASMA</button>
+    <button type="button" data-mode="VOID" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; padding:7px 11px; background:rgba(8,9,11,0.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border:1px solid rgba(236,233,224,0.2); color:#717a86; border-radius:100px; cursor:none;">VOID</button>
+  </div>
+</div>
+
+<!-- header -->
+<header style="position:fixed; top:0; left:0; right:0; z-index:40; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:18px clamp(20px,5vw,64px); pointer-events:none;">
+  <a href="#/home" data-cursor data-magnet style="pointer-events:auto; display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; font-weight:600; flex:none;">
+    <span style="width:8px; height:8px; border-radius:50%; background:#4de3ff; box-shadow:0 0 12px #4de3ff; animation:blink 2.4s ease-in-out infinite;"></span>
+    ADYANTH·S
+  </a>
+  <nav style="pointer-events:auto; display:flex; gap:clamp(10px,1.6vw,24px); align-items:center; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:#717a86; flex-wrap:wrap; justify-content:flex-end;">
+    <a href="#/home" data-nav-link="home" data-cursor style="transition:color .3s; padding-bottom:3px; border-bottom:1px solid transparent;">Home</a>
+    <a href="#/about" data-nav-link="about" data-cursor style="transition:color .3s; padding-bottom:3px; border-bottom:1px solid transparent;">About</a>
+    <a href="#/projects" data-nav-link="projects" data-cursor style="transition:color .3s; padding-bottom:3px; border-bottom:1px solid transparent;">Projects</a>
+    <a href="#/journey" data-nav-link="journey" data-cursor style="transition:color .3s; padding-bottom:3px; border-bottom:1px solid transparent;">Journey</a>
+    <a href="#/skills" data-nav-link="skills" data-cursor style="transition:color .3s; padding-bottom:3px; border-bottom:1px solid transparent;">Skills</a>
+    <a href="#/awards" data-nav-link="awards" data-cursor style="transition:color .3s; padding-bottom:3px; border-bottom:1px solid transparent;">Awards</a>
+    <a href="#/contact" data-nav-link="contact" data-cursor style="transition:color .3s; padding-bottom:3px; border-bottom:1px solid transparent;">Contact</a>
+    <span style="width:1px; height:14px; background:rgba(236,233,224,0.18); display:inline-block;"></span>
+    <span id="clock" style="color:#4de3ff; min-width:62px; text-align:right;">--:--:--</span>
+  </nav>
+</header>
+
+<!-- view transition wipe -->
+<div id="wipe" style="position:fixed; inset:0; z-index:48; background:#0a0b0e; transform:scaleY(0); transform-origin:top; pointer-events:none; display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(77,227,255,0.3);">
+  <span id="wipe-label" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.4em; color:#4de3ff; text-transform:uppercase;">LOADING://</span>
+</div>
+
+<main style="position:relative; z-index:2;">
+
+  <!-- ============ HOME ============ -->
+  <div data-view="home" data-screen-label="Home" style="display:block;">
+    <section style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:90px clamp(20px,5vw,64px) 0; pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto; width:100%;">
+        <p data-scramble style="font-family:'JetBrains Mono',monospace; font-size:clamp(11px,1.2vw,13px); letter-spacing:0.34em; color:#4de3ff; text-transform:uppercase; margin:0 0 26px; pointer-events:auto; display:inline-flex; align-items:center; gap:14px; animation:heroUp 1s cubic-bezier(.2,.8,.2,1) 2.4s both;">
+          <span style="display:inline-block; width:46px; height:1px; background:#4de3ff;"></span> Machine Learning Engineer
+        </p>
+        <h1 style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(36px,11.4vw,156px); line-height:0.92; letter-spacing:-0.045em; white-space:nowrap; pointer-events:auto;">
+          <span style="display:block; overflow:hidden; padding-bottom:0.08em;"><span style="display:inline-block; animation:heroUp 1.1s cubic-bezier(.2,.85,.25,1) 2.5s both;">ADYANTH <span style="color:transparent; -webkit-text-stroke:1.4px rgba(236,233,224,0.55);">S.</span></span></span>
+        </h1>
+        <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:30px; margin-top:34px;">
+          <p style="max-width:600px; margin:0; font-size:clamp(15px,1.7vw,19px); line-height:1.6; color:#c7d0da; text-shadow:0 1px 12px rgba(8,9,11,0.9); pointer-events:auto; animation:heroUp 1s cubic-bezier(.2,.8,.2,1) 2.7s both;">
+            I build intelligent systems that turn complex problems into real solutions — from <span style="color:#ece9e0;">LoRA/QLoRA fine-tuning</span> and <span style="color:#ece9e0;">multi-agent LLM pipelines</span> to <span style="color:#ece9e0;">quantum machine learning</span> and healthcare AI.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:10px; pointer-events:auto; font-family:'JetBrains Mono',monospace; font-size:12px; color:#8f99a5; letter-spacing:0.04em; animation:heroUp 1s cubic-bezier(.2,.8,.2,1) 2.8s both;">
+            <a href="mailto:adyanth.s@gmail.com" data-cursor style="color:#c7d0da; transition:color .3s;" style-hover="color:#4de3ff;">◢ adyanth.s@gmail.com</a>
+            <span>◢&nbsp; Bengaluru, India · IST</span>
+            <span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#5dffb0;margin-right:8px;box-shadow:0 0 8px #5dffb0;"></span>Open to AI/ML internships</span>
+          </div>
         </div>
-        
-    </header>
-    
-    <!-- ------------------------------------------------------
-    This is the work section, which has two parts: the featured
-	section and the projects section.
-    ------------------------------------------------------- -->
-    
-    <section id="work">
-   		<div class="wrapper">
-        	<h2>Check Out My Best Projects</h2>
-        	<section class="featured">
-                <article>
-                	<!-- ------------------------------------------------------
-                    Link the image below to the detail page for this project.
-                    Use the page.html file to make that page. Also link the 
-                    anchor tag in the paragraph below to the same page.
-                    ------------------------------------------------------- -->
-                	<a href="#"><img src="https://dummyimage.com/510x300/c4c4c4/fff&text=Featured+Project" alt="image"></a>
-                </article>
-                
-                <article>
-                	<h3>Title of Project</h3>
-                    <h4>Challenge Statement</h4>
-                    <p>Before they sold out single-origin coffee fingerstache sartorial freegan master cleanse. Sartorial blog fap, shoreditch scenester tacos poutine. Bespoke brunch viral listicle, keffiyeh celiac paleo organic scenester next level cliche put a bird on it cardigan. Forage kombucha pitchfork literally. Art party narwhal food truck selfies, XOXO leggings distillery four loko fap. An additional sentence.</p> <p><a href="#">Find out how I solved this problem</a></p> 
-                </article>
-            </section> <!-- end row -->
-            
-            
-            <!-- ------------------------------------------------------
-            The projects section is for additional projects. I put four in
-			here, but it could be more, or less. You just have to pay
-			attention to how they wrap, and how many you want per row.
-            
-            Note that each image should be linked to the page with more
-            detailed information about that project. You can use a copy of
-            page.html to create those pages.
-            ------------------------------------------------------- -->
-            
-            <section class="projects">
-            
-            	<article>
-                	<h3>Project Title</h3>
-                	<a href="#"><img src="https://dummyimage.com/340x200/c4c4c4/fff&text=Another+Project" alt="image"></a>
-                    <p><strong>Role:</strong> Designer</p>
-                    <p><strong>Description:</strong> Website for a restaurant and redesigned the online menu.</p>
-                </article>
-                
-                <article>
-                	<h3>Project Title</h3>
-                	<a href="#"><img src="https://dummyimage.com/340x200/c4c4c4/fff&text=Another+Project" alt="image"></a>
-                    <p><strong>Role:</strong> Designer</p>
-                    <p><strong>Description:</strong> Website for a restaurant and redesigned the online menu.</p>
-                </article>
-                
-                <article>
-                	<h3>Project Title</h3>
-                	<a href="#"><img src="https://dummyimage.com/340x200/c4c4c4/fff&text=Another+Project" alt="image"></a>
-                    <p><strong>Role:</strong> Designer</p>
-                    <p><strong>Description:</strong> Website for a restaurant and redesigned the online menu.</p>
-                </article>
-				
-				<article>
-                	<h3>Project Title</h3>
-                	<a href="#"><img src="https://dummyimage.com/340x200/c4c4c4/fff&text=Another+Project" alt="image"></a>
-                    <p><strong>Role:</strong> Designer</p>
-                    <p><strong>Description:</strong> Website for a restaurant and redesigned the online menu.</p>
-                </article>
-            
-            </section><!-- end row -->
-            
-        </div> <!-- end work wrapper -->
+        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:40px; pointer-events:auto; animation:heroUp 1s cubic-bezier(.2,.8,.2,1) 2.9s both;">
+          <a href="#/projects" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.08em; padding:14px 26px; background:#ece9e0; color:#08090b; border-radius:100px; font-weight:600; transition:background .3s;" style-hover="background:#4de3ff; color:#08090b;">EXPLORE PROJECTS →</a>
+          <a href="Adyanth_S_Resume.pdf" download data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.08em; padding:14px 26px; border:1px solid rgba(236,233,224,0.25); border-radius:100px; color:#ece9e0; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">↓ RESUME</a>
+          <a href="#/contact" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.08em; padding:14px 26px; border:1px solid rgba(236,233,224,0.25); border-radius:100px; color:#ece9e0; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">CONTACT</a>
+        </div>
+      </div>
+      <div style="position:absolute; bottom:26px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:12px; pointer-events:none; animation:heroUp 1s ease 3s both;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.3em; color:#565f6b; text-transform:uppercase;">Drag to rotate · Scroll</span>
+        <span style="width:21px; height:34px; border:1px solid rgba(113,122,134,0.45); border-radius:13px; position:relative; display:block;"><span style="position:absolute; top:7px; left:50%; transform:translateX(-50%); width:3px; height:6px; border-radius:3px; background:#4de3ff; animation:scrollDot 1.8s ease-in-out infinite;"></span></span>
+      </div>
     </section>
-    
-    
-    <!-- ------------------------------------------------------
-    This is the about and contact section. The links in the main
-    navigation link to this section. 
-    ------------------------------------------------------- -->
-    
-    <section id="about-contact" class="secondary">
-   		<div class="wrapper">
-        	
-			<div class="profile-photo">
-            	<img src="http://placehold.it/260?text=Your+Photo" alt="image">
+
+    <div style="position:relative; border-top:1px solid rgba(236,233,224,0.12); border-bottom:1px solid rgba(236,233,224,0.12); overflow:hidden; padding:18px 0; pointer-events:none; background:rgba(8,9,11,0.4); backdrop-filter:blur(4px);">
+      <div style="display:flex; width:max-content; animation:marq 32s linear infinite; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(22px,3vw,40px); letter-spacing:-0.02em; color:#3b424d;">
+        <div style="display:flex; gap:0; flex:none;">
+          <span style="padding:0 28px;">LLM FINE-TUNING</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">MULTI-AGENT AI</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">RETRIEVAL-AUGMENTED GENERATION</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">QUANTUM ML</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">HEALTHCARE AI</span><span style="padding:0 28px; color:#4de3ff;">✳</span>
+        </div>
+        <div style="display:flex; gap:0; flex:none;" aria-hidden="true">
+          <span style="padding:0 28px;">LLM FINE-TUNING</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">MULTI-AGENT AI</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">RETRIEVAL-AUGMENTED GENERATION</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">QUANTUM ML</span><span style="padding:0 28px; color:#4de3ff;">✳</span><span style="padding:0 28px;">HEALTHCARE AI</span><span style="padding:0 28px; color:#4de3ff;">✳</span>
+        </div>
+      </div>
+    </div>
+
+    <section style="position:relative; padding:clamp(80px,11vh,140px) clamp(20px,5vw,64px); pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div style="display:flex; gap:14px; align-items:baseline; margin-bottom:36px; pointer-events:auto;">
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#4de3ff; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">(01)</span>
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#717a86; text-transform:uppercase; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">Featured Work</span>
+        </div>
+        <div style="border-top:1px solid rgba(236,233,224,0.14); pointer-events:auto;">
+          <a href="#/projects" data-cursor data-feat data-reveal style="display:grid; grid-template-columns:64px 1fr auto; gap:clamp(14px,3vw,40px); align-items:center; padding:clamp(22px,3vw,34px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b;">01</span>
+            <span><span data-feat-title style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(22px,3.4vw,42px); font-weight:600; letter-spacing:-0.02em; line-height:1.05; transition:color .35s, transform .45s cubic-bezier(.2,.8,.2,1);">HIS — Hospital Information System</span><span style="display:block; margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#717a86; text-transform:uppercase;">Full-stack healthcare platform · Hybrid RAG · FHIR R4</span></span>
+            <span data-feat-arrow style="font-size:clamp(20px,2.6vw,30px); color:#565f6b; transition:color .35s, transform .45s cubic-bezier(.2,.8,.2,1);">→</span>
+          </a>
+          <a href="#/projects" data-cursor data-feat data-reveal style="display:grid; grid-template-columns:64px 1fr auto; gap:clamp(14px,3vw,40px); align-items:center; padding:clamp(22px,3vw,34px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .06s, transform .9s cubic-bezier(.2,.8,.2,1) .06s;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b;">02</span>
+            <span><span data-feat-title style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(22px,3.4vw,42px); font-weight:600; letter-spacing:-0.02em; line-height:1.05; transition:color .35s, transform .45s cubic-bezier(.2,.8,.2,1);">Multi-Agent Medical Severity Classifier</span><span style="display:block; margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#717a86; text-transform:uppercase;">BioMistral-7B · QLoRA · 92% accuracy</span></span>
+            <span data-feat-arrow style="font-size:clamp(20px,2.6vw,30px); color:#565f6b; transition:color .35s, transform .45s cubic-bezier(.2,.8,.2,1);">→</span>
+          </a>
+          <a href="#/projects" data-cursor data-feat data-reveal style="display:grid; grid-template-columns:64px 1fr auto; gap:clamp(14px,3vw,40px); align-items:center; padding:clamp(22px,3vw,34px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .12s, transform .9s cubic-bezier(.2,.8,.2,1) .12s;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b;">03</span>
+            <span><span data-feat-title style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(22px,3.4vw,42px); font-weight:600; letter-spacing:-0.02em; line-height:1.05; transition:color .35s, transform .45s cubic-bezier(.2,.8,.2,1);">Quantum Kernel ECG Classification</span><span style="display:block; margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#717a86; text-transform:uppercase;">Qiskit · QSVM · physiology-aware feature map</span></span>
+            <span data-feat-arrow style="font-size:clamp(20px,2.6vw,30px); color:#565f6b; transition:color .35s, transform .45s cubic-bezier(.2,.8,.2,1);">→</span>
+          </a>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:0; margin-top:70px; border-top:1px solid rgba(236,233,224,0.14); pointer-events:auto;">
+          <div data-reveal style="padding:26px 24px 8px; border-right:1px solid rgba(236,233,224,0.1); opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);"><div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(34px,5vw,54px); font-weight:700; color:#ece9e0; letter-spacing:-0.03em; line-height:1;">92<span style="color:#4de3ff;">%</span></div><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#8f99a5; text-transform:uppercase; margin-top:12px;">Clinical classification accuracy</div></div>
+          <div data-reveal style="padding:26px 24px 8px; border-right:1px solid rgba(236,233,224,0.1); opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.2,.8,.2,1) .07s, transform .8s cubic-bezier(.2,.8,.2,1) .07s;"><div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(34px,5vw,54px); font-weight:700; color:#ece9e0; letter-spacing:-0.03em; line-height:1;">6<span style="color:#4de3ff;">+</span></div><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#8f99a5; text-transform:uppercase; margin-top:12px;">End-to-end ML projects</div></div>
+          <div data-reveal style="padding:26px 24px 8px; border-right:1px solid rgba(236,233,224,0.1); opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.2,.8,.2,1) .14s, transform .8s cubic-bezier(.2,.8,.2,1) .14s;"><div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(34px,5vw,54px); font-weight:700; color:#ece9e0; letter-spacing:-0.03em; line-height:1;">4<span style="color:#4de3ff;">-bit</span></div><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#8f99a5; text-transform:uppercase; margin-top:12px;">QLoRA tuning on 7B+ LLMs</div></div>
+          <div data-reveal style="padding:26px 24px 8px; opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.2,.8,.2,1) .21s, transform .8s cubic-bezier(.2,.8,.2,1) .21s;"><div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(34px,5vw,54px); font-weight:700; color:#ece9e0; letter-spacing:-0.03em; line-height:1;">3<span style="color:#4de3ff;">×</span></div><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#8f99a5; text-transform:uppercase; margin-top:12px;">Hackathon podium finishes</div></div>
+        </div>
+        <div data-reveal style="margin-top:90px; text-align:center; pointer-events:auto; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+          <p style="margin:0 0 26px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(24px,3.6vw,44px); font-weight:500; letter-spacing:-0.02em; color:#ece9e0; text-wrap:balance;">Have an ambitious idea?<br><span style="color:#4de3ff;">Let&rsquo;s build something intelligent.</span></p>
+          <a href="#/contact" data-cursor data-magnet style="display:inline-block; font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.08em; padding:14px 28px; background:#ece9e0; color:#08090b; border-radius:100px; font-weight:600; transition:background .3s;" style-hover="background:#4de3ff;">GET IN TOUCH →</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <div data-view="about" data-screen-label="About" style="display:none;">
+    <section style="position:relative; min-height:100vh; padding:185px clamp(20px,5vw,64px) 80px; pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div style="display:flex; gap:14px; align-items:baseline; margin-bottom:42px; pointer-events:auto;">
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#4de3ff; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">(02)</span>
+          <span data-reveal data-scramble style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#717a86; text-transform:uppercase; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">About</span>
+        </div>
+        <h2 data-reveal style="margin:0; max-width:1050px; font-family:'Bricolage Grotesque',sans-serif; font-weight:500; font-size:clamp(26px,4.2vw,56px); line-height:1.16; letter-spacing:-0.02em; color:#ece9e0; pointer-events:auto; text-wrap:balance; opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.2,.8,.2,1) .1s, transform 1s cubic-bezier(.2,.8,.2,1) .1s;">
+          Fourth-year B.Tech AI/ML student at <span style="color:#4de3ff;">PES University</span>, experienced in LLM fine-tuning, multi-agent systems, RAG, and quantum machine learning — shipping end-to-end pipelines that reach <span style="color:#4de3ff;">92% accuracy</span> on clinical data.
+        </h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; margin-top:70px; pointer-events:auto;">
+          <div data-reveal style="grid-column:1/-1; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:18px; padding:28px 30px; border:1px solid rgba(236,233,224,0.14); border-radius:14px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Education</div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.4vw,28px); font-weight:600; letter-spacing:-0.015em;">B.Tech — Artificial Intelligence &amp; Machine Learning</div>
+              <div style="color:#c2cbd6; font-size:14.5px; margin-top:6px; font-family:'JetBrains Mono',monospace;">PES University, Bengaluru</div>
             </div>
-			
-            <article>
-				<h2>About Me</h2>
-				<p>Fixie owner, father of 3, fender owner, reclaimed wood collector and javascripter. Acting at the junction of minimalism and intellectual purity to create great work for living breathing human beings. I'm a designer and this is my work.</p>
-				<h3>Skills</h3>
-				<p>I am particularly good at BLAH BLAH and really enjoy BLAH. I am currently learning BLAH and I'm very exited about BLAH BLAH.</p>
-			</article> 
-                
-			<article>
-				<h2>Contact Me!</h2>
-				<p>I am currently looking for opportunities to work on a team at a design shop. Please feel free to contact me by phone, email or through the usual social media channels.</p>
-
-				<!-- ------------------------------------------------------
-				Be sure to encode your email address at this site, so you 
-				don't get spam. http://wbwip.com/wbw/emailencoder.html
-				------------------------------------------------------- -->
-
-				<p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:&#101;&#109;&#097;&#105;&#108;&#064;&#115;&#111;&#109;&#101;&#119;&#104;&#101;&#114;&#101;&#046;&#099;&#111;&#109;">&#101;&#109;&#097;&#105;&#108;&#064;&#115;&#111;&#109;&#101;&#119;&#104;&#101;&#114;&#101;&#046;&#099;&#111;&#109;</a><br>
-				<i class="fa fa-phone" aria-hidden="true"></i> 123-456-7890</p>
-
-				<!-- ------------------------------------------------------
-				You can see here that I have included font-awesome. It is used
-				to create the icons above and below. You can go to the font-awesome
-				website to see the available icons and swap some out.
-				------------------------------------------------------- -->
-
-				<p class="social">
-					<a href="#"><i class="fab fa-facebook"></i></a>
-					<a href="#"><i class="fab fa-linkedin"></i></a> 
-					<a href="#"><i class="fab fa-twitter-square"></i></a>
-				</p>
-			</article>
-                   
+            <div style="display:flex; gap:34px; font-family:'JetBrains Mono',monospace;">
+              <div><div style="font-size:11px; letter-spacing:0.14em; color:#717a86; text-transform:uppercase;">Years</div><div style="font-size:20px; color:#ece9e0; margin-top:6px;">2023–2027</div></div>
+            </div>
+          </div>
+          <div data-reveal style="padding:26px 26px 28px; border:1px solid rgba(236,233,224,0.12); border-radius:14px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s, border-color .4s;" style-hover="border-color:rgba(77,227,255,0.4);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:12px;">◢ Healthcare AI</div>
+            <p style="margin:0; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">Clinical LLM pipelines, severity triage, early-warning vitals scoring, FHIR interoperability — AI that helps care teams decide faster.</p>
+          </div>
+          <div data-reveal style="padding:26px 26px 28px; border:1px solid rgba(236,233,224,0.12); border-radius:14px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .1s, transform .9s cubic-bezier(.2,.8,.2,1) .1s, border-color .4s;" style-hover="border-color:rgba(77,227,255,0.4);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:12px;">◢ LLM Systems</div>
+            <p style="margin:0; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">LoRA/QLoRA fine-tuning, hybrid RAG with rank fusion, multi-agent orchestration, hallucination guards — grounded, citation-checked answers.</p>
+          </div>
+          <div data-reveal style="padding:26px 26px 28px; border:1px solid rgba(236,233,224,0.12); border-radius:14px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .15s, transform .9s cubic-bezier(.2,.8,.2,1) .15s, border-color .4s;" style-hover="border-color:rgba(77,227,255,0.4);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:12px;">◢ Quantum ML</div>
+            <p style="margin:0; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">Quantum kernels, QSVM, hybrid quantum-classical models — searching for advantage in noisy, low-data clinical regimes.</p>
+          </div>
+          <div data-reveal style="padding:26px 26px 28px; border:1px solid rgba(236,233,224,0.12); border-radius:14px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .2s, transform .9s cubic-bezier(.2,.8,.2,1) .2s, border-color .4s;" style-hover="border-color:rgba(77,227,255,0.4);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:12px;">◢ RL &amp; NLP</div>
+            <p style="margin:0; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">Reinforcement learning, RLHF, prompt engineering, transfer learning — the training loop end of the stack.</p>
+          </div>
         </div>
+        <div data-reveal style="margin-top:50px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; padding:24px 30px; border:1px solid rgba(93,255,176,0.25); border-radius:14px; background:rgba(93,255,176,0.04); pointer-events:auto; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+          <div style="display:flex; align-items:center; gap:12px; font-family:'JetBrains Mono',monospace; font-size:13px; color:#c8ffe6;"><span style="width:8px; height:8px; border-radius:50%; background:#5dffb0; box-shadow:0 0 10px #5dffb0; animation:blink 2s ease-in-out infinite;"></span>Currently seeking AI/ML internships — healthcare &amp; applied machine learning</div>
+          <a href="#/contact" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:11px 22px; border:1px solid rgba(93,255,176,0.4); border-radius:100px; color:#c8ffe6; transition:background .3s;" style-hover="background:rgba(93,255,176,0.12);">SAY HELLO →</a>
+        </div>
+      </div>
     </section>
-    
-    
-    <!-- ------------------------------------------------------
-    The footer section is not doing much on this page. Add more
-    content if necessary.
-    ------------------------------------------------------- -->
-    <footer class="primary">
-    	<div class="wrapper">
-        	<p class="centered">&copy; 2019 all rights reserved</p>
-        </div>
-    </footer>
+  </div>
 
+  <!-- ============ PROJECTS ============ -->
+  <div data-view="projects" data-screen-label="Projects" style="display:none;">
+    <section style="position:relative; min-height:100vh; padding:185px clamp(20px,5vw,64px) 80px; pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div style="display:flex; gap:14px; align-items:baseline; margin-bottom:18px; pointer-events:auto;">
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#4de3ff; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">(03)</span>
+          <span data-reveal data-scramble style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#717a86; text-transform:uppercase; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">Selected Work</span>
+        </div>
+        <h2 data-reveal style="margin:0 0 12px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(32px,5.4vw,68px); font-weight:600; letter-spacing:-0.03em; line-height:1; pointer-events:auto; opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.2,.8,.2,1) .06s, transform 1s cubic-bezier(.2,.8,.2,1) .06s;">Things I&rsquo;ve built</h2>
+        <p data-reveal style="margin:0 0 40px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; color:#717a86; pointer-events:auto; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .1s, transform .9s cubic-bezier(.2,.8,.2,1) .1s;">Open a case study for the problem → approach → result breakdown.</p>
+
+        <div id="work-list" style="border-top:1px solid rgba(236,233,224,0.14);">
+
+          <article data-row data-reveal style="pointer-events:auto; position:relative; display:grid; grid-template-columns:clamp(40px,6vw,88px) 1fr; gap:clamp(16px,3vw,48px); padding:clamp(28px,3.5vw,44px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b; padding-top:8px;">01</div>
+            <div>
+              <div style="display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:#5dffb0; text-transform:uppercase; margin-bottom:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#5dffb0;box-shadow:0 0 8px #5dffb0;"></span>Healthcare Systems · Flagship</div>
+              <h3 data-row-title style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(26px,4vw,52px); font-weight:600; letter-spacing:-0.025em; line-height:1.02; color:#ece9e0; transition:color .4s, transform .5s cubic-bezier(.2,.8,.2,1);">HIS — Hospital Information System</h3>
+              <p data-row-desc style="margin:0 0 18px; max-width:700px; color:#c7d0da; font-size:clamp(14px,1.5vw,16px); line-height:1.64; text-shadow:0 1px 12px rgba(8,9,11,0.9); transition:color .45s ease, text-shadow .45s ease;">A full-stack platform unifying patient records, clinical workflows and ML-assisted decision support — polyglot persistence behind a FastAPI gateway, with a hybrid RAG engine serving <span style="color:#4de3ff;">citation-checked, hallucination-guarded</span> clinical answers.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; color:#8f99a5; text-transform:uppercase; margin-bottom:16px;"><span>FastAPI</span><span>PostgreSQL</span><span>Elasticsearch</span><span>Milvus</span><span>Llama 3.1 / Ollama</span><span>Docker</span><span>FHIR R4</span></div>
+              <button type="button" data-case-btn data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; padding:10px 18px; background:transparent; border:1px solid rgba(77,227,255,0.35); border-radius:100px; color:#4de3ff; cursor:none; transition:background .3s;">CASE STUDY +</button>
+              <div data-case style="max-height:0; overflow:hidden; transition:max-height .6s cubic-bezier(.2,.8,.2,1);">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; padding-top:22px;">
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Problem</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Hospital data lives in silos — records, documents, search and retrieval each in different systems, none of them conversational.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Approach</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Polyglot persistence: PostgreSQL (EHR + RBAC), Elasticsearch (BM25), Milvus (dense vectors), MinIO (documents). Hybrid RAG with reciprocal-rank fusion over a locally hosted Llama 3.1.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Result</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Citation-checked, hallucination-guarded clinical Q&amp;A with FHIR R4 interoperability, early-warning vitals scoring, and Docker/Nginx deployment via Cloudflare Tunnel.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article data-row data-reveal style="pointer-events:auto; position:relative; display:grid; grid-template-columns:clamp(40px,6vw,88px) 1fr; gap:clamp(16px,3vw,48px); padding:clamp(28px,3.5vw,44px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .04s, transform .9s cubic-bezier(.2,.8,.2,1) .04s;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b; padding-top:8px;">02</div>
+            <div>
+              <h3 data-row-title style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(26px,4vw,52px); font-weight:600; letter-spacing:-0.025em; line-height:1.02; color:#ece9e0; transition:color .4s, transform .5s cubic-bezier(.2,.8,.2,1);">Multi-Agent Medical Severity Classification</h3>
+              <p data-row-desc style="margin:0 0 18px; max-width:700px; color:#c7d0da; font-size:clamp(14px,1.5vw,16px); line-height:1.64; text-shadow:0 1px 12px rgba(8,9,11,0.9); transition:color .45s ease, text-shadow .45s ease;">A multi-agent LLM pipeline classifying patient symptom descriptions into Mild / Moderate / Severe / Critical tiers with <span style="color:#ece9e0;">BioMistral-7B</span> &amp; <span style="color:#ece9e0;">MedAlpaca-13B</span> — reaching <span style="color:#4de3ff;">92% accuracy</span> on held-out data.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; color:#8f99a5; text-transform:uppercase; margin-bottom:16px;"><span>BioMistral-7B</span><span>MedAlpaca-13B</span><span>QLoRA</span><span>PyTorch</span><span>Hugging Face</span></div>
+              <button type="button" data-case-btn data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; padding:10px 18px; background:transparent; border:1px solid rgba(77,227,255,0.35); border-radius:100px; color:#4de3ff; cursor:none; transition:background .3s;">CASE STUDY +</button>
+              <div data-case style="max-height:0; overflow:hidden; transition:max-height .6s cubic-bezier(.2,.8,.2,1);">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; padding-top:22px;">
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Problem</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Free-text symptom descriptions are ambiguous; mis-triage of severe cases is the costliest failure mode.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Approach</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">4-bit QLoRA fine-tune of BioMistral-7B (r=16, α=32); a confidence-aware hard-flag override that escalates safety-critical cases; a ClinicalReasoningAgent for structured explanations.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Result</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">92% classification accuracy on held-out data, with explainable severity calls and guaranteed escalation on hard flags.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article data-row data-reveal style="pointer-events:auto; position:relative; display:grid; grid-template-columns:clamp(40px,6vw,88px) 1fr; gap:clamp(16px,3vw,48px); padding:clamp(28px,3.5vw,44px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b; padding-top:8px;">03</div>
+            <div>
+              <h3 data-row-title style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(26px,4vw,52px); font-weight:600; letter-spacing:-0.025em; line-height:1.02; color:#ece9e0; transition:color .4s, transform .5s cubic-bezier(.2,.8,.2,1);">NexusGuard — AI Governance Platform</h3>
+              <p data-row-desc style="margin:0 0 18px; max-width:700px; color:#c7d0da; font-size:clamp(14px,1.5vw,16px); line-height:1.64; text-shadow:0 1px 12px rgba(8,9,11,0.9); transition:color .45s ease, text-shadow .45s ease;">A hackathon AI-governance platform with <span style="color:#ece9e0;">Need-Role-Level</span> access control — role-based query classification returning GRANTED / DENIED / BLOCKED, backed by a RAG pipeline over 150 synthetic policy documents.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; color:#8f99a5; text-transform:uppercase; margin-bottom:16px;"><span>Llama 3.1 8B</span><span>ChromaDB</span><span>FastAPI</span><span>Ollama</span><span>Spring Boot</span><span>React</span></div>
+              <button type="button" data-case-btn data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; padding:10px 18px; background:transparent; border:1px solid rgba(77,227,255,0.35); border-radius:100px; color:#4de3ff; cursor:none; transition:background .3s;">CASE STUDY +</button>
+              <div data-case style="max-height:0; overflow:hidden; transition:max-height .6s cubic-bezier(.2,.8,.2,1);">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; padding-top:22px;">
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Problem</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Corporate LLM assistants leak information across roles — access control needs to live inside the AI layer, not around it.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Approach</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Owned LLM fine-tuning + the FastAPI layer. Built the ChromaDB RAG pipeline; diagnosed overfitting in the fine-tuned model and pivoted to an Ollama system-prompt deployment.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Result</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Working NRL access control demo at hackathon pace — an honest engineering pivot that shipped over a fragile fine-tune.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article data-row data-reveal style="pointer-events:auto; position:relative; display:grid; grid-template-columns:clamp(40px,6vw,88px) 1fr; gap:clamp(16px,3vw,48px); padding:clamp(28px,3.5vw,44px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .04s, transform .9s cubic-bezier(.2,.8,.2,1) .04s;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b; padding-top:8px;">04</div>
+            <div>
+              <h3 data-row-title style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(26px,4vw,52px); font-weight:600; letter-spacing:-0.025em; line-height:1.02; color:#ece9e0; transition:color .4s, transform .5s cubic-bezier(.2,.8,.2,1);">Quantum Kernel ECG Classification</h3>
+              <p data-row-desc style="margin:0 0 18px; max-width:700px; color:#c7d0da; font-size:clamp(14px,1.5vw,16px); line-height:1.64; text-shadow:0 1px 12px rgba(8,9,11,0.9); transition:color .45s ease, text-shadow .45s ease;">A QML model for ECG disease classification using <span style="color:#ece9e0;">quantum kernels + QSVM</span>, with a novel physiology-aware quantum feature map and multi-lead entanglement — improving robustness on noisy, low-data ECG.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; color:#8f99a5; text-transform:uppercase; margin-bottom:16px;"><span>Qiskit</span><span>QSVM</span><span>Quantum Kernels</span><span>scikit-learn</span></div>
+              <button type="button" data-case-btn data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; padding:10px 18px; background:transparent; border:1px solid rgba(77,227,255,0.35); border-radius:100px; color:#4de3ff; cursor:none; transition:background .3s;">CASE STUDY +</button>
+              <div data-case style="max-height:0; overflow:hidden; transition:max-height .6s cubic-bezier(.2,.8,.2,1);">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; padding-top:22px;">
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Problem</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Classical ECG classifiers degrade fast on noisy signals and small labeled datasets — exactly where clinics live.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Approach</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Quantum kernels + QSVM with a physiology-aware feature map: multi-lead entanglement encodes inter-lead relationships directly into the circuit.</p></div>
+                  <div style="padding:20px; border:1px solid rgba(236,233,224,0.12); border-radius:12px; background:rgba(10,11,14,0.5);"><div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; margin-bottom:10px;">Result</div><p style="margin:0; color:#c7d0da; font-size:13.5px; line-height:1.6;">Improved accuracy and robustness over classical baselines in noisy, low-data regimes.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article data-row data-reveal style="pointer-events:auto; position:relative; display:grid; grid-template-columns:clamp(40px,6vw,88px) 1fr; gap:clamp(16px,3vw,48px); padding:clamp(28px,3.5vw,44px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b; padding-top:8px;">05</div>
+            <div>
+              <h3 data-row-title style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(26px,4vw,52px); font-weight:600; letter-spacing:-0.025em; line-height:1.02; color:#ece9e0; transition:color .4s, transform .5s cubic-bezier(.2,.8,.2,1);">Neural Weight Denoising &amp; Translation</h3>
+              <p data-row-desc style="margin:0; max-width:700px; color:#c7d0da; font-size:clamp(14px,1.5vw,16px); line-height:1.64; text-shadow:0 1px 12px rgba(8,9,11,0.9); transition:color .45s ease, text-shadow .45s ease;">A neural weight-denoising model that reconstructs corrupted network parameters for an LSTM encoder–decoder translator.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; color:#8f99a5; text-transform:uppercase; margin-top:16px;"><span>PyTorch</span><span>LSTM</span><span>Encoder-Decoder</span></div>
+            </div>
+          </article>
+
+          <article data-row data-reveal style="pointer-events:auto; position:relative; display:grid; grid-template-columns:clamp(40px,6vw,88px) 1fr; gap:clamp(16px,3vw,48px); padding:clamp(28px,3.5vw,44px) 0; border-bottom:1px solid rgba(236,233,224,0.12); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .04s, transform .9s cubic-bezier(.2,.8,.2,1) .04s;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#565f6b; padding-top:8px;">06</div>
+            <div>
+              <h3 data-row-title style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(26px,4vw,52px); font-weight:600; letter-spacing:-0.025em; line-height:1.02; color:#ece9e0; transition:color .4s, transform .5s cubic-bezier(.2,.8,.2,1);">Age Prediction from Gene Expression</h3>
+              <p data-row-desc style="margin:0; max-width:700px; color:#c7d0da; font-size:clamp(14px,1.5vw,16px); line-height:1.64; text-shadow:0 1px 12px rgba(8,9,11,0.9); transition:color .45s ease, text-shadow .45s ease;">An ElasticNet model predicting biological age from gene-expression data (<span style="color:#ece9e0;">GSE113957</span>) — scaling, regularization and honest feature engineering on high-dimensional biology.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; color:#8f99a5; text-transform:uppercase; margin-top:16px;"><span>Scikit-learn</span><span>ElasticNet</span><span>Pandas</span><span>NumPy</span></div>
+            </div>
+          </article>
+
+        </div>
+
+        <div data-reveal style="margin-top:38px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; pointer-events:auto; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; color:#717a86;">More experiments live on GitHub &amp; Kaggle.</span>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="https://github.com/Adyanth-2005" target="_blank" rel="noopener" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:12px 22px; border:1px solid rgba(236,233,224,0.25); border-radius:100px; color:#ece9e0; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">GITHUB ↗</a>
+            <a href="https://www.kaggle.com/adyanth" target="_blank" rel="noopener" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:12px 22px; border:1px solid rgba(236,233,224,0.25); border-radius:100px; color:#ece9e0; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">KAGGLE ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ JOURNEY ============ -->
+  <div data-view="journey" data-screen-label="Journey" style="display:none;">
+    <section style="position:relative; min-height:100vh; padding:185px clamp(20px,5vw,64px) 100px; pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div style="display:flex; gap:14px; align-items:baseline; margin-bottom:18px; pointer-events:auto;">
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#4de3ff; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">(04)</span>
+          <span data-reveal data-scramble style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#717a86; text-transform:uppercase; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">Journey</span>
+        </div>
+        <h2 data-reveal style="margin:0 0 64px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(32px,5.4vw,68px); font-weight:600; letter-spacing:-0.03em; line-height:1; pointer-events:auto; opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.2,.8,.2,1) .06s, transform 1s cubic-bezier(.2,.8,.2,1) .06s;">The route so far</h2>
+
+        <div style="pointer-events:auto;">
+
+          <div data-reveal style="display:grid; grid-template-columns:clamp(72px,10vw,140px) 26px 1fr; gap:clamp(12px,2.4vw,28px); padding-bottom:52px; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div style="text-align:right; padding-top:5px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#717a86; text-transform:uppercase;">Grade 12</div>
+            <div style="position:relative;">
+              <span style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#4de3ff; box-shadow:0 0 10px #4de3ff;"></span>
+              <span style="position:absolute; top:26px; bottom:-52px; left:50%; width:1px; background:linear-gradient(to bottom, rgba(77,227,255,0.45), rgba(236,233,224,0.08));"></span>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.8vw,32px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:#ece9e0;">2nd Place — District Mathematics Competition</h3>
+              <p style="margin:0; max-width:640px; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">SDM College. The first proof that hunting for patterns pays off.</p>
+            </div>
+          </div>
+
+          <div data-reveal style="display:grid; grid-template-columns:clamp(72px,10vw,140px) 26px 1fr; gap:clamp(12px,2.4vw,28px); padding-bottom:52px; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">
+            <div style="text-align:right; padding-top:5px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#4de3ff; text-transform:uppercase;">2023</div>
+            <div style="position:relative;">
+              <span style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#4de3ff; box-shadow:0 0 10px #4de3ff;"></span>
+              <span style="position:absolute; top:26px; bottom:-52px; left:50%; width:1px; background:linear-gradient(to bottom, rgba(77,227,255,0.45), rgba(236,233,224,0.08));"></span>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.8vw,32px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:#ece9e0;">B.Tech AI/ML begins — PES University</h3>
+              <p style="margin:0; max-width:640px; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">Foundation years in Bengaluru — mathematics, ML fundamentals, and the first end-to-end pipelines.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:16px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#8f99a5; text-transform:uppercase; margin-top:12px;"><span>2023–2027 expected</span></div>
+            </div>
+          </div>
+
+          <div data-reveal style="display:grid; grid-template-columns:clamp(72px,10vw,140px) 26px 1fr; gap:clamp(12px,2.4vw,28px); padding-bottom:52px; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div style="text-align:right; padding-top:5px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#717a86; text-transform:uppercase;">Ideathon</div>
+            <div style="position:relative;">
+              <span style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#4de3ff; box-shadow:0 0 10px #4de3ff;"></span>
+              <span style="position:absolute; top:26px; bottom:-52px; left:50%; width:1px; background:linear-gradient(to bottom, rgba(77,227,255,0.45), rgba(236,233,224,0.08));"></span>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.8vw,32px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:#ece9e0;">Runner-Up — Quadriplegia Assistance System</h3>
+              <p style="margin:0; max-width:640px; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">Assistive tech for mobility and independence — the first taste of building for healthcare, and the reason it stuck.</p>
+            </div>
+          </div>
+
+          <div data-reveal style="display:grid; grid-template-columns:clamp(72px,10vw,140px) 26px 1fr; gap:clamp(12px,2.4vw,28px); padding-bottom:52px; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">
+            <div style="text-align:right; padding-top:5px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#717a86; text-transform:uppercase;">Hackathon</div>
+            <div style="position:relative;">
+              <span style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#4de3ff; box-shadow:0 0 10px #4de3ff;"></span>
+              <span style="position:absolute; top:26px; bottom:-52px; left:50%; width:1px; background:linear-gradient(to bottom, rgba(77,227,255,0.45), rgba(236,233,224,0.08));"></span>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.8vw,32px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:#ece9e0;">4th of 60 teams — Praxis Hackathon</h3>
+              <p style="margin:0; max-width:640px; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">Hackathon pace: scope hard, ship a working demo, defend the engineering decisions in front of judges.</p>
+            </div>
+          </div>
+
+          <div data-reveal style="display:grid; grid-template-columns:clamp(72px,10vw,140px) 26px 1fr; gap:clamp(12px,2.4vw,28px); padding-bottom:52px; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div style="text-align:right; padding-top:5px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#717a86; text-transform:uppercase;">Years 3–4</div>
+            <div style="position:relative;">
+              <span style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#4de3ff; box-shadow:0 0 10px #4de3ff;"></span>
+              <span style="position:absolute; top:26px; bottom:-52px; left:50%; width:1px; background:linear-gradient(to bottom, rgba(77,227,255,0.45), rgba(236,233,224,0.08));"></span>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.8vw,32px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:#ece9e0;">The healthcare-AI systems era</h3>
+              <p style="margin:0; max-width:640px; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">HIS, the multi-agent severity classifier at <span style="color:#4de3ff;">92% accuracy</span>, quantum-kernel ECG — research-grade ideas shipped as working systems.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:16px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#8f99a5; text-transform:uppercase; margin-top:12px;"><span>LLM fine-tuning</span><span>Hybrid RAG</span><span>Quantum ML</span></div>
+            </div>
+          </div>
+
+          <div data-reveal style="display:grid; grid-template-columns:clamp(72px,10vw,140px) 26px 1fr; gap:clamp(12px,2.4vw,28px); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">
+            <div style="text-align:right; padding-top:5px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#5dffb0; text-transform:uppercase;">Now → 2027</div>
+            <div style="position:relative;">
+              <span style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#5dffb0; box-shadow:0 0 12px #5dffb0; animation:blink 2.2s ease-in-out infinite;"></span>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.8vw,32px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:#ece9e0;">Open to what&rsquo;s next</h3>
+              <p style="margin:0 0 16px; max-width:640px; color:#c7d0da; font-size:14.5px; line-height:1.62; text-shadow:0 1px 10px rgba(8,9,11,0.85);">B.Tech expected 2027. Actively seeking AI/ML internships in healthcare and applied machine learning.</p>
+              <a href="#/contact" data-cursor data-magnet style="display:inline-block; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:12px 22px; border:1px solid rgba(93,255,176,0.4); border-radius:100px; color:#c8ffe6; transition:background .3s;" style-hover="background:rgba(93,255,176,0.12);">BE PART OF IT →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ SKILLS ============ -->
+  <div data-view="skills" data-screen-label="Skills" style="display:none;">
+    <section style="position:relative; min-height:100vh; padding:185px clamp(20px,5vw,64px) 100px; pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div style="display:flex; gap:14px; align-items:baseline; margin-bottom:18px; pointer-events:auto;">
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#4de3ff; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">(05)</span>
+          <span data-reveal data-scramble style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#717a86; text-transform:uppercase; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">Tech Stack</span>
+        </div>
+        <h2 data-reveal style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(32px,5.4vw,68px); font-weight:600; letter-spacing:-0.03em; line-height:1; pointer-events:auto; opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.2,.8,.2,1) .06s, transform 1s cubic-bezier(.2,.8,.2,1) .06s;">Technical ecosystem</h2>
+        <p data-reveal style="margin:0 0 30px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; color:#717a86; pointer-events:auto; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .1s, transform .9s cubic-bezier(.2,.8,.2,1) .1s;">Hover any node — the tracer shows which projects it powers.</p>
+
+        <div style="pointer-events:auto; position:sticky; top:72px; z-index:5;">
+          <div id="skill-out" aria-live="polite" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.06em; color:#8f99a5; padding:16px 20px; border:1px solid rgba(77,227,255,0.25); border-radius:12px; background:rgba(8,9,11,0.78); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); min-height:50px; display:flex; align-items:center; gap:8px;"><span style="color:#4de3ff;">◢ TRACE //</span> awaiting node…</div>
+        </div>
+
+        <div style="pointer-events:auto; margin-top:34px; border-top:1px solid rgba(236,233,224,0.14);">
+
+          <div data-specrow data-reveal style="display:grid; grid-template-columns:clamp(110px,16vw,220px) 1fr; gap:clamp(14px,3vw,40px); padding:28px 0; border-bottom:1px solid rgba(236,233,224,0.12); transition:padding-left .4s cubic-bezier(.2,.8,.2,1), opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); opacity:0; transform:translateY(24px);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; padding-top:10px;">Languages</div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button type="button" data-skill="Python" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Python</button>
+              <button type="button" data-skill="C" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">C</button>
+              <button type="button" data-skill="SQL" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">SQL</button>
+            </div>
+          </div>
+
+          <div data-specrow data-reveal style="display:grid; grid-template-columns:clamp(110px,16vw,220px) 1fr; gap:clamp(14px,3vw,40px); padding:28px 0; border-bottom:1px solid rgba(236,233,224,0.12); transition:padding-left .4s cubic-bezier(.2,.8,.2,1), opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s; opacity:0; transform:translateY(24px);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; padding-top:10px;">Frameworks &amp; Libraries</div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button type="button" data-skill="PyTorch" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">PyTorch</button>
+              <button type="button" data-skill="Hugging Face Transformers" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Hugging Face Transformers</button>
+              <button type="button" data-skill="TensorFlow" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">TensorFlow</button>
+              <button type="button" data-skill="Scikit-learn" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Scikit-learn</button>
+              <button type="button" data-skill="Pandas" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Pandas</button>
+              <button type="button" data-skill="NumPy" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">NumPy</button>
+              <button type="button" data-skill="LangChain" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">LangChain</button>
+              <button type="button" data-skill="FastAPI" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">FastAPI</button>
+            </div>
+          </div>
+
+          <div data-specrow data-reveal style="display:grid; grid-template-columns:clamp(110px,16vw,220px) 1fr; gap:clamp(14px,3vw,40px); padding:28px 0; border-bottom:1px solid rgba(236,233,224,0.12); transition:padding-left .4s cubic-bezier(.2,.8,.2,1), opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); opacity:0; transform:translateY(24px);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; padding-top:10px;">ML &amp; AI Techniques</div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button type="button" data-skill="LLMs" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Large Language Models</button>
+              <button type="button" data-skill="LoRA / QLoRA" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">LoRA / QLoRA Fine-tuning</button>
+              <button type="button" data-skill="RAG" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Retrieval-Augmented Generation</button>
+              <button type="button" data-skill="Multi-Agent Systems" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Multi-Agent Systems</button>
+              <button type="button" data-skill="NLP" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">NLP</button>
+              <button type="button" data-skill="Reinforcement Learning" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Reinforcement Learning</button>
+              <button type="button" data-skill="RLHF" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">RLHF</button>
+              <button type="button" data-skill="Prompt Engineering" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Prompt Engineering</button>
+              <button type="button" data-skill="Transfer Learning" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Transfer Learning</button>
+            </div>
+          </div>
+
+          <div data-specrow data-reveal style="display:grid; grid-template-columns:clamp(110px,16vw,220px) 1fr; gap:clamp(14px,3vw,40px); padding:28px 0; border-bottom:1px solid rgba(236,233,224,0.12); transition:padding-left .4s cubic-bezier(.2,.8,.2,1), opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s; opacity:0; transform:translateY(24px);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; padding-top:10px;">Quantum ML</div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button type="button" data-skill="Qiskit" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Qiskit</button>
+              <button type="button" data-skill="Quantum Kernels" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Quantum Kernels</button>
+              <button type="button" data-skill="QSVM" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">QSVM</button>
+              <button type="button" data-skill="Hybrid Quantum-Classical" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Hybrid Quantum-Classical</button>
+              <button type="button" data-skill="QNNs" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Quantum Neural Networks</button>
+            </div>
+          </div>
+
+          <div data-specrow data-reveal style="display:grid; grid-template-columns:clamp(110px,16vw,220px) 1fr; gap:clamp(14px,3vw,40px); padding:28px 0; border-bottom:1px solid rgba(236,233,224,0.12); transition:padding-left .4s cubic-bezier(.2,.8,.2,1), opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); opacity:0; transform:translateY(24px);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#4de3ff; text-transform:uppercase; padding-top:10px;">Tools &amp; Infrastructure</div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button type="button" data-skill="Ollama" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Ollama</button>
+              <button type="button" data-skill="ChromaDB" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">ChromaDB</button>
+              <button type="button" data-skill="Docker" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Docker</button>
+              <button type="button" data-skill="Nginx" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Nginx</button>
+              <button type="button" data-skill="PostgreSQL" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">PostgreSQL</button>
+              <button type="button" data-skill="Elasticsearch" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Elasticsearch</button>
+              <button type="button" data-skill="Milvus" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Milvus</button>
+              <button type="button" data-skill="Git / GitHub" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Git / GitHub</button>
+              <button type="button" data-skill="Jupyter" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Jupyter</button>
+              <button type="button" data-skill="CUDA" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">CUDA</button>
+              <button type="button" data-skill="Linux" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">Linux</button>
+              <button type="button" data-skill="REST APIs" data-cursor style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; padding:9px 16px; background:rgba(10,11,14,0.5); border:1px solid rgba(236,233,224,0.16); border-radius:100px; color:#c2cbd6; cursor:none; transition:border-color .3s, color .3s, background .3s;" style-hover="border-color:rgba(77,227,255,0.55); color:#4de3ff; background:rgba(77,227,255,0.06);">REST APIs</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ AWARDS ============ -->
+  <div data-view="awards" data-screen-label="Awards" style="display:none;">
+    <section style="position:relative; min-height:100vh; padding:185px clamp(20px,5vw,64px) 100px; pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div style="display:flex; gap:14px; align-items:baseline; margin-bottom:18px; pointer-events:auto;">
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#4de3ff; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">(06)</span>
+          <span data-reveal data-scramble style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#717a86; text-transform:uppercase; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">Recognition</span>
+        </div>
+        <h2 data-reveal style="margin:0 0 14px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(32px,5.4vw,68px); font-weight:600; letter-spacing:-0.03em; line-height:1; pointer-events:auto; opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.2,.8,.2,1) .06s, transform 1s cubic-bezier(.2,.8,.2,1) .06s;">Proof of work</h2>
+        <p data-reveal style="margin:0 0 50px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; color:#717a86; pointer-events:auto; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .1s, transform .9s cubic-bezier(.2,.8,.2,1) .1s;">Judged rooms, timed builds, ranked results.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:18px; pointer-events:auto;">
+          <div data-tilt data-reveal style="position:relative; display:flex; flex-direction:column; gap:14px; padding:36px 30px 28px; border:1px solid rgba(236,233,224,0.13); border-radius:16px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); will-change:transform; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(34px,4.4vw,54px); font-weight:700; letter-spacing:-0.03em; line-height:1; color:#4de3ff;">4TH<span style="color:#3b424d;"> / 60</span></div>
+            <div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(19px,2.2vw,25px); font-weight:600; letter-spacing:-0.015em; color:#ece9e0;">Praxis Hackathon</div>
+              <p style="margin:10px 0 0; color:#c7d0da; font-size:14px; line-height:1.6;">Placed 4th out of 60 competing teams — build, demo and defend under the clock.</p>
+            </div>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(236,233,224,0.1); font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#717a86; text-transform:uppercase;">◢ Hackathon</div>
+          </div>
+
+          <div data-tilt data-reveal style="position:relative; display:flex; flex-direction:column; gap:14px; padding:36px 30px 28px; border:1px solid rgba(236,233,224,0.13); border-radius:16px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); will-change:transform; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .07s, transform .9s cubic-bezier(.2,.8,.2,1) .07s;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(34px,4.4vw,54px); font-weight:700; letter-spacing:-0.03em; line-height:1; color:#4de3ff;">R-UP</div>
+            <div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(19px,2.2vw,25px); font-weight:600; letter-spacing:-0.015em; color:#ece9e0;">IDEATHON — Runner-Up</div>
+              <p style="margin:10px 0 0; color:#c7d0da; font-size:14px; line-height:1.6;">Quadriplegia Assistance System — assistive technology for enhanced mobility and independence.</p>
+            </div>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(236,233,224,0.1); font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#717a86; text-transform:uppercase;">◢ Ideathon</div>
+          </div>
+
+          <div data-tilt data-reveal style="position:relative; display:flex; flex-direction:column; gap:14px; padding:36px 30px 28px; border:1px solid rgba(236,233,224,0.13); border-radius:16px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); will-change:transform; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .14s, transform .9s cubic-bezier(.2,.8,.2,1) .14s;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(34px,4.4vw,54px); font-weight:700; letter-spacing:-0.03em; line-height:1; color:#4de3ff;">2ND</div>
+            <div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(19px,2.2vw,25px); font-weight:600; letter-spacing:-0.015em; color:#ece9e0;">District Mathematics Competition</div>
+              <p style="margin:10px 0 0; color:#c7d0da; font-size:14px; line-height:1.6;">2nd place at district level — SDM College, grade 12.</p>
+            </div>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(236,233,224,0.1); font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#717a86; text-transform:uppercase;">◢ Mathematics</div>
+          </div>
+        </div>
+
+        <div data-reveal style="margin-top:44px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; padding:24px 30px; border:1px solid rgba(236,233,224,0.12); border-radius:14px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); pointer-events:auto; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#8f99a5; letter-spacing:0.04em;">The best trophy is a system running in production. <span style="color:#ece9e0;">See the projects behind these.</span></span>
+          <a href="#/projects" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:11px 22px; border:1px solid rgba(77,227,255,0.35); border-radius:100px; color:#4de3ff; transition:background .3s;" style-hover="background:rgba(77,227,255,0.08);">VIEW PROJECTS →</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <div data-view="contact" data-screen-label="Contact" style="display:none;">
+    <section style="position:relative; min-height:100vh; padding:185px clamp(20px,5vw,64px) 100px; pointer-events:none;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div style="display:flex; gap:14px; align-items:baseline; margin-bottom:18px; pointer-events:auto;">
+          <span data-reveal style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#4de3ff; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">(07)</span>
+          <span data-reveal data-scramble style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#717a86; text-transform:uppercase; opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .05s, transform .9s cubic-bezier(.2,.8,.2,1) .05s;">Contact</span>
+        </div>
+        <h2 data-reveal style="margin:0 0 54px; max-width:1000px; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(30px,5vw,64px); font-weight:600; letter-spacing:-0.03em; line-height:1.04; pointer-events:auto; text-wrap:balance; opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.2,.8,.2,1) .06s, transform 1s cubic-bezier(.2,.8,.2,1) .06s;">Have an ambitious idea?<br><span style="color:#4de3ff;">Let&rsquo;s build something intelligent.</span></h2>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; pointer-events:auto;">
+
+          <div data-reveal style="display:flex; flex-direction:column; gap:26px; opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#717a86; text-transform:uppercase; margin-bottom:12px;">Direct line</div>
+              <a href="mailto:adyanth.s@gmail.com" data-cursor style="display:inline-block; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(20px,2.9vw,36px); font-weight:600; letter-spacing:-0.02em; color:#ece9e0; transition:color .3s; overflow-wrap:anywhere;" style-hover="color:#4de3ff;">adyanth.s@gmail.com</a>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#8f99a5; letter-spacing:0.04em;">
+              <a href="tel:+916360060718" data-cursor style="color:#c7d0da; transition:color .3s;" style-hover="color:#4de3ff;">◢ +91 63600 60718</a>
+              <span>◢&nbsp; Bengaluru, Karnataka · IST</span>
+              <span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#5dffb0;margin-right:8px;box-shadow:0 0 8px #5dffb0;"></span>Open to AI/ML internships — healthcare &amp; applied ML</span>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <a href="https://www.linkedin.com/in/adyanth-s-80238a1bb/" target="_blank" rel="noopener" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:12px 22px; border:1px solid rgba(236,233,224,0.25); border-radius:100px; color:#ece9e0; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">LINKEDIN ↗</a>
+              <a href="https://github.com/Adyanth-2005" target="_blank" rel="noopener" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:12px 22px; border:1px solid rgba(236,233,224,0.25); border-radius:100px; color:#ece9e0; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">GITHUB ↗</a>
+              <a href="https://www.kaggle.com/adyanth" target="_blank" rel="noopener" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:12px 22px; border:1px solid rgba(236,233,224,0.25); border-radius:100px; color:#ece9e0; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">KAGGLE ↗</a>
+              <a href="Adyanth_S_Resume.pdf" download data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; padding:12px 22px; background:#ece9e0; color:#08090b; border-radius:100px; font-weight:600; transition:background .3s;" style-hover="background:#4de3ff;">↓ RESUME</a>
+            </div>
+          </div>
+
+          <div data-reveal style="padding:30px; border:1px solid rgba(236,233,224,0.13); border-radius:16px; background:rgba(10,11,14,0.55); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.8,.2,1) .08s, transform .9s cubic-bezier(.2,.8,.2,1) .08s;">
+            <form id="contact-form" novalidate style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px;">
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <label for="f-name" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#717a86; text-transform:uppercase;">Name</label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" style="width:100%; padding:13px 16px; background:rgba(8,9,11,0.6); border:1px solid rgba(236,233,224,0.16); border-radius:10px; color:#ece9e0; font-size:14px; transition:border-color .3s;">
+                </div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <label for="f-email" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#717a86; text-transform:uppercase;">Email</label>
+                  <input id="f-email" name="email" type="email" autocomplete="email" style="width:100%; padding:13px 16px; background:rgba(8,9,11,0.6); border:1px solid rgba(236,233,224,0.16); border-radius:10px; color:#ece9e0; font-size:14px; transition:border-color .3s;">
+                </div>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <label for="f-subject" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#717a86; text-transform:uppercase;">Subject</label>
+                <input id="f-subject" name="subject" type="text" style="width:100%; padding:13px 16px; background:rgba(8,9,11,0.6); border:1px solid rgba(236,233,224,0.16); border-radius:10px; color:#ece9e0; font-size:14px; transition:border-color .3s;">
+              </div>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <label for="f-msg" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; color:#717a86; text-transform:uppercase;">Message</label>
+                <textarea id="f-msg" name="message" rows="5" style="width:100%; padding:13px 16px; background:rgba(8,9,11,0.6); border:1px solid rgba(236,233,224,0.16); border-radius:10px; color:#ece9e0; font-size:14px; resize:vertical; min-height:110px; transition:border-color .3s;"></textarea>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px;">
+                <button id="f-send" type="submit" data-cursor data-magnet style="font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.08em; padding:14px 28px; background:#ece9e0; color:#08090b; border:none; border-radius:100px; font-weight:600; cursor:none; transition:background .3s, opacity .3s;" style-hover="background:#4de3ff;">TRANSMIT →</button>
+                <span id="form-status" aria-live="polite" style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; color:#717a86;"></span>
+              </div>
+            </form>
+            <div id="form-done" style="display:none; flex-direction:column; gap:12px; align-items:flex-start; padding:8px 0;">
+              <div style="display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; color:#5dffb0; text-transform:uppercase;"><span style="width:8px; height:8px; border-radius:50%; background:#5dffb0; box-shadow:0 0 10px #5dffb0;"></span>Transmission staged</div>
+              <p style="margin:0; color:#c7d0da; font-size:14.5px; line-height:1.6;">Your mail client should now be open with the message pre-filled. If it isn&rsquo;t, write directly to <a href="mailto:adyanth.s@gmail.com" data-cursor style="color:#4de3ff;">adyanth.s@gmail.com</a>.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<!-- footer -->
+<footer style="position:relative; z-index:2; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; padding:22px clamp(20px,5vw,64px) 74px; border-top:1px solid rgba(236,233,224,0.12); background:rgba(8,9,11,0.4); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);">
+  <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#717a86;">© 2026 ADYANTH·S — BENGALURU</span>
+  <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#565f6b;">IST <span id="clock2" style="color:#8f99a5;">--:--:--</span></span>
+  <button type="button" data-top data-cursor style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.16em; padding:9px 16px; background:transparent; border:1px solid rgba(236,233,224,0.2); border-radius:100px; color:#8f99a5; cursor:none; transition:border-color .3s, color .3s;" style-hover="border-color:#4de3ff; color:#4de3ff;">↑ TOP</button>
+</footer>
+<script>
+(function(){
+  var props = { ambientMode: 'FLUX', showHud: true, skipIntro: false };
+  class Component {
+    constructor(props) { this.props = props; }
+  componentDidMount() {
+    this._disposed = false;
+    this._prm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._mode = (this.props.ambientMode === 'ARC' ? 'FLUX' : this.props.ambientMode) || 'FLUX';
+    this._modes = {
+      FLUX:   { neb: [0x4de3ff, 0x9d7bff, 0x2266ff], grid: 0x1c93ad, pulse: 0xc8f6ff, hud: '#4de3ff', fog: 0x08090b },
+      PLASMA: { neb: [0xff3fbf, 0x7b5bff, 0x4de3ff], grid: 0x9a2f8a, pulse: 0xffc8f6, hud: '#ff6fd6', fog: 0x0a070b },
+      VOID:   { neb: [0x7fd3ff, 0xb6c8ff, 0x5dffb0], grid: 0x2a3a44, pulse: 0xeaf6ff, hud: '#bfe9ff', fog: 0x070809 }
+    };
+    if (this.props.skipIntro) {
+      const l = document.getElementById('loader'); if (l) l.style.display = 'none';
+      document.querySelectorAll('[style*="heroUp"]').forEach(el => { el.style.animationDelay = '0s'; });
+    } else {
+      this._runLoader();
+    }
+    if (this.props.showHud === false) { const h = document.getElementById('hud'); if (h) h.style.display = 'none'; }
+    this._startClock();
+    this._waitForThree();
+    this._setupScroll();
+    this._setupRouter();
+    this._setupReveals();
+    this._setupCursor();
+    this._setupMagnet();
+    this._setupRowHover();
+    this._setupBgSwitch();
+    this._setupCases();
+    this._setupTilt();
+    this._setupSkills();
+    this._setupForm();
+    this._setupTop();
+    this._setupHoverStyles();
+    this._applyMode(this._mode);
+    this._safety = setTimeout(() => this._revealActive(), 3800);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.ambientMode !== this.props.ambientMode && this.props.ambientMode) this._applyMode(this.props.ambientMode);
+    if (prevProps.showHud !== this.props.showHud) { const h = document.getElementById('hud'); if (h) h.style.display = this.props.showHud === false ? 'none' : 'block'; }
+  }
+
+  componentWillUnmount() {
+    this._disposed = true;
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._curRaf) cancelAnimationFrame(this._curRaf);
+    if (this._clockIv) clearInterval(this._clockIv);
+    if (this._loadRaf) cancelAnimationFrame(this._loadRaf);
+    if (this._safety) clearTimeout(this._safety);
+    if (this._revT) clearTimeout(this._revT);
+    if (this._wipeT1) clearTimeout(this._wipeT1);
+    if (this._onHash) window.removeEventListener('hashchange', this._onHash);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    if (this._onScrollFn) window.removeEventListener('scroll', this._onScrollFn);
+    if (this._onPM) window.removeEventListener('pointermove', this._onPM);
+    if (this._renderer) { try { this._renderer.dispose(); } catch (e) {} }
+  }
+
+  // ---------- ambient modes ----------
+  _applyMode(name) {
+    const M = this._modes[name]; if (!M) return; this._mode = name;
+    document.querySelectorAll('#hud [data-hud-stroke]').forEach(e => { e.style.stroke = M.hud; });
+    document.querySelectorAll('#hud [data-hud-color]').forEach(e => { e.style.color = M.hud; });
+    document.querySelectorAll('#hud [data-hud-border]').forEach(e => { e.style.borderLeftColor = M.hud; e.style.borderRightColor = M.hud; e.style.borderTopColor = M.hud; e.style.borderBottomColor = M.hud; });
+    document.querySelectorAll('#hud [data-hud-bg]').forEach(e => { e.style.background = M.hud; });
+    document.querySelectorAll('#bg-switch [data-mode]').forEach(b => {
+      const on = b.getAttribute('data-mode') === name;
+      b.style.borderColor = on ? M.hud : 'rgba(236,233,224,0.2)';
+      b.style.color = on ? M.hud : '#717a86';
+    });
+    if (this._nebMats) this._nebMats.forEach((m, i) => m.color.setHex(M.neb[i % M.neb.length]));
+    if (this._gridMat) this._gridMat.color.setHex(M.grid);
+    if (this._pulseMat) this._pulseMat.color.setHex(M.pulse);
+    if (this._fog) this._fog.color.setHex(M.fog);
+    if (this._setActive && this._current) this._setActive(this._current);
+  }
+
+  _glow(hex, a) {
+    const h = hex.replace('#', '');
+    return 'rgba(' + parseInt(h.substring(0, 2), 16) + ',' + parseInt(h.substring(2, 4), 16) + ',' + parseInt(h.substring(4, 6), 16) + ',' + a + ')';
+  }
+
+  _setupBgSwitch() {
+    document.querySelectorAll('#bg-switch [data-mode]').forEach(b => {
+      b.addEventListener('click', () => this._applyMode(b.getAttribute('data-mode')));
+    });
+  }
+
+  // ---------- router ----------
+  _setupRouter() {
+    this._views = Array.from(document.querySelectorAll('[data-view]'));
+    this._current = null;
+    const names = this._views.map(v => v.getAttribute('data-view'));
+    const fromHash = () => { const h = (location.hash || '').replace(/^#\/?/, '').toLowerCase(); return names.indexOf(h) >= 0 ? h : 'home'; };
+    const links = document.querySelectorAll('[data-nav-link]');
+    this._setActive = (name) => {
+      const hud = (this._modes[this._mode] || {}).hud || '#4de3ff';
+      links.forEach(l => {
+        const on = l.getAttribute('data-nav-link') === name;
+        l.style.color = on ? '#ece9e0' : '#717a86';
+        l.style.borderBottomColor = on ? hud : 'transparent';
+      });
+      const hv = document.getElementById('hud-view'); if (hv) hv.textContent = 'VIEW://' + name.toUpperCase();
+    };
+    const show = (name) => {
+      this._views.forEach(v => { v.style.display = v.getAttribute('data-view') === name ? 'block' : 'none'; });
+      window.scrollTo(0, 0);
+      if (this._onScrollFn) this._onScrollFn();
+      this._setActive(name);
+      this._current = name;
+      clearTimeout(this._revT);
+      this._revT = setTimeout(() => this._revealActive(), 1400);
+    };
+    const wipe = document.getElementById('wipe');
+    const wl = document.getElementById('wipe-label');
+    this._navigate = (name) => {
+      if (name === this._current || this._wiping) { if (name !== this._current) { clearTimeout(this._wipeT1); this._wiping = false; show(name); } return; }
+      if (!wipe || this._prm) { show(name); return; }
+      this._wiping = true;
+      if (wl) wl.textContent = 'LOADING://' + name.toUpperCase();
+      wipe.style.transition = 'transform .42s cubic-bezier(.7,0,.3,1)';
+      wipe.style.transformOrigin = 'top';
+      wipe.style.transform = 'scaleY(1)';
+      this._wipeT1 = setTimeout(() => {
+        show(name);
+        wipe.style.transformOrigin = 'bottom';
+        wipe.style.transform = 'scaleY(0)';
+        this._wiping = false;
+      }, 450);
+    };
+    this._onHash = () => this._navigate(fromHash());
+    window.addEventListener('hashchange', this._onHash);
+    show(fromHash());
+  }
+
+  // ---------- loader ----------
+  _runLoader() {
+    const numEl = document.getElementById('load-num');
+    const barEl = document.getElementById('load-bar');
+    const labelEl = document.getElementById('load-label');
+    const labels = ['LOADING ASSETS', 'BUILDING GRAPH', 'WIRING SYNAPSES', 'CALIBRATING', 'READY'];
+    const start = performance.now(), dur = 2200;
+    const step = (now) => {
+      if (this._disposed) return;
+      const p = Math.min(1, (now - start) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      if (numEl) numEl.textContent = String(Math.floor(e * 100)).padStart(3, '0');
+      if (barEl) barEl.style.inset = '0 ' + (100 - e * 100) + '% 0 0';
+      if (labelEl) labelEl.textContent = labels[Math.min(labels.length - 1, Math.floor(p * labels.length))];
+      if (p < 1) this._loadRaf = requestAnimationFrame(step);
+    };
+    this._loadRaf = requestAnimationFrame(step);
+  }
+
+  // ---------- clock (IST) ----------
+  _startClock() {
+    const tick = () => {
+      const t = new Date().toLocaleTimeString('en-GB', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const a = document.getElementById('clock'); const b = document.getElementById('clock2');
+      if (a) a.textContent = t; if (b) b.textContent = t;
+    };
+    tick();
+    this._clockIv = setInterval(tick, 1000);
+  }
+
+  // ---------- scroll progress ----------
+  _setupScroll() {
+    this._scrollP = 0;
+    const pr = document.getElementById('progress');
+    this._onScrollFn = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      this._scrollP = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      if (pr) pr.style.transform = 'scaleX(' + this._scrollP + ')';
+    };
+    window.addEventListener('scroll', this._onScrollFn, { passive: true });
+    this._onScrollFn();
+  }
+
+  _setupTop() {
+    document.querySelectorAll('[data-top]').forEach(b => {
+      b.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: this._prm ? 'auto' : 'smooth' }); });
+    });
+  }
+
+  // ---------- reveals + scramble ----------
+  _revealActive() {
+    const act = this._views ? this._views.find(v => v.getAttribute('data-view') === this._current) : null;
+    (act || document).querySelectorAll('[data-reveal]').forEach(el => {
+      if (getComputedStyle(el).opacity === '0') { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }
+    });
+  }
+  _scramble(el) {
+    const finalText = el.getAttribute('data-final') || el.textContent;
+    el.setAttribute('data-final', finalText);
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#%&/<>*+';
+    const len = finalText.length;
+    const start = performance.now(), dur = 620;
+    const run = (now) => {
+      if (this._disposed) return;
+      const p = Math.min(1, (now - start) / dur);
+      const reveal = Math.floor(p * len);
+      let out = '';
+      for (let i = 0; i < len; i++) {
+        const c = finalText[i];
+        if (c === ' ' || c === '\u2014' || c === '(' || c === ')') { out += c; continue; }
+        out += i < reveal ? c : chars[(Math.random() * chars.length) | 0];
+      }
+      el.textContent = out;
+      if (p < 1) requestAnimationFrame(run); else el.textContent = finalText;
+    };
+    if (this._prm) { el.textContent = finalText; return; }
+    requestAnimationFrame(run);
+  }
+  _setupReveals() {
+    const els = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('[data-reveal]').forEach(el => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
+      document.querySelectorAll('[data-scramble]').forEach(e => this._scramble(e));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          if (e.target.hasAttribute('data-scramble')) this._scramble(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+    document.querySelectorAll('[data-scramble]:not([data-reveal])').forEach(el => {
+      setTimeout(() => this._scramble(el), this.props.skipIntro ? 300 : 2500);
+    });
+  }
+
+  // ---------- custom cursor ----------
+  _setupCursor() {
+    if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const ring = document.getElementById('cur-ring');
+    const dot = document.getElementById('cur-dot');
+    if (!ring || !dot) return;
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+    this._onPM = (ev) => { mx = ev.clientX; my = ev.clientY; dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)'; };
+    window.addEventListener('pointermove', this._onPM, { passive: true });
+    const loop = () => {
+      if (this._disposed) return;
+      rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      this._curRaf = requestAnimationFrame(loop);
+    };
+    loop();
+    document.querySelectorAll('[data-cursor]').forEach(el => {
+      el.addEventListener('pointerenter', () => { ring.style.width = '58px'; ring.style.height = '58px'; ring.style.backgroundColor = 'rgba(77,227,255,0.12)'; ring.style.borderColor = 'rgba(77,227,255,0.7)'; });
+      el.addEventListener('pointerleave', () => { ring.style.width = '34px'; ring.style.height = '34px'; ring.style.backgroundColor = 'transparent'; ring.style.borderColor = 'rgba(236,233,224,0.5)'; });
+    });
+  }
+
+  // ---------- magnetic ----------
+  _setupMagnet() {
+    if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches || this._prm) return;
+    document.querySelectorAll('[data-magnet]').forEach(el => {
+      el.style.transition = (el.style.transition ? el.style.transition + ', ' : '') + 'transform .35s cubic-bezier(.2,.8,.2,1)';
+      el.addEventListener('pointermove', (ev) => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = 'translate(' + ((ev.clientX - (r.left + r.width / 2)) * 0.32) + 'px,' + ((ev.clientY - (r.top + r.height / 2)) * 0.32) + 'px)';
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = 'translate(0,0)'; });
+    });
+  }
+
+  // ---------- hovers ----------
+  _setupRowHover() {
+    document.querySelectorAll('[data-row]').forEach(row => {
+      const title = row.querySelector('[data-row-title]');
+      const desc = row.querySelector('[data-row-desc]');
+      row.addEventListener('pointerenter', () => {
+        const hud = (this._modes[this._mode] || {}).hud || '#4de3ff';
+        if (title) { title.style.color = hud; title.style.transform = 'translateX(10px)'; }
+        if (desc) { desc.style.color = '#ffffff'; desc.style.textShadow = '0 0 18px ' + this._glow(hud, 0.55) + ', 0 1px 12px rgba(8,9,11,0.9)'; }
+      });
+      row.addEventListener('pointerleave', () => {
+        if (title) { title.style.color = '#ece9e0'; title.style.transform = 'translateX(0)'; }
+        if (desc) { desc.style.color = '#c7d0da'; desc.style.textShadow = '0 1px 12px rgba(8,9,11,0.9)'; }
+      });
+    });
+    document.querySelectorAll('[data-feat]').forEach(row => {
+      const title = row.querySelector('[data-feat-title]');
+      const arrow = row.querySelector('[data-feat-arrow]');
+      row.addEventListener('pointerenter', () => {
+        const hud = (this._modes[this._mode] || {}).hud || '#4de3ff';
+        if (title) { title.style.color = hud; title.style.transform = 'translateX(10px)'; }
+        if (arrow) { arrow.style.color = hud; arrow.style.transform = 'translateX(8px)'; }
+      });
+      row.addEventListener('pointerleave', () => {
+        if (title) { title.style.color = ''; title.style.transform = 'translateX(0)'; }
+        if (arrow) { arrow.style.color = '#565f6b'; arrow.style.transform = 'translateX(0)'; }
+      });
+    });
+    document.querySelectorAll('[data-specrow]').forEach(row => {
+      row.addEventListener('pointerenter', () => { row.style.paddingLeft = '14px'; });
+      row.addEventListener('pointerleave', () => { row.style.paddingLeft = '0'; });
+    });
+  }
+
+  // ---------- case studies ----------
+  _setupCases() {
+    document.querySelectorAll('[data-case-btn]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wrap = btn.parentElement.querySelector('[data-case]');
+        if (!wrap) return;
+        const open = wrap.style.maxHeight && wrap.style.maxHeight !== '0px';
+        if (open) { wrap.style.maxHeight = '0px'; btn.textContent = 'CASE STUDY +'; }
+        else { wrap.style.maxHeight = (wrap.scrollHeight + 40) + 'px'; btn.textContent = 'CLOSE \u2212'; }
+      });
+    });
+  }
+
+  // ---------- 3D card tilt ----------
+  _setupTilt() {
+    if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches || this._prm) return;
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      el.addEventListener('pointerenter', () => { el.style.opacity = '1'; el.style.transition = 'transform .18s ease-out, border-color .4s, opacity .3s'; el.style.borderColor = 'rgba(77,227,255,0.4)'; });
+      el.addEventListener('pointermove', (ev) => {
+        const r = el.getBoundingClientRect();
+        const px = (ev.clientX - r.left) / r.width - 0.5;
+        const py = (ev.clientY - r.top) / r.height - 0.5;
+        el.style.transform = 'perspective(700px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 9).toFixed(2) + 'deg) translateY(-4px)';
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = 'transform .6s cubic-bezier(.2,.8,.2,1), border-color .5s';
+        el.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        el.style.borderColor = 'rgba(236,233,224,0.13)';
+      });
+    });
+  }
+
+  // ---------- skill tracer ----------
+  _setupSkills() {
+    const out = document.getElementById('skill-out');
+    if (!out) return;
+    const M = {
+      'Python': 'the substrate — all six projects run on it',
+      'C': 'systems foundations — pointers before tensors',
+      'SQL': 'HIS — PostgreSQL EHR schema + RBAC',
+      'PyTorch': 'Severity Classifier \u00b7 Weight Denoising &amp; Translation',
+      'Hugging Face Transformers': 'Severity Classifier — BioMistral-7B / MedAlpaca-13B',
+      'TensorFlow': 'deep-learning coursework &amp; experiments',
+      'Scikit-learn': 'Age Prediction \u00b7 Quantum ECG classical baselines',
+      'Pandas': 'Age Prediction \u00b7 every data pipeline',
+      'NumPy': 'everywhere tensors go',
+      'LangChain': 'RAG experiments &amp; agent orchestration',
+      'FastAPI': 'HIS gateway \u00b7 NexusGuard service layer',
+      'LLMs': 'HIS \u00b7 Severity Classifier \u00b7 NexusGuard',
+      'LoRA / QLoRA': 'Severity Classifier — 4-bit QLoRA (r=16, \u03b1=32)',
+      'RAG': 'HIS hybrid RAG \u00b7 NexusGuard policy RAG',
+      'Multi-Agent Systems': 'Severity Classifier — agent pipeline + ClinicalReasoningAgent',
+      'NLP': 'LSTM Machine Translation \u00b7 clinical text pipelines',
+      'Reinforcement Learning': 'training-loop end of the stack — RL &amp; RLHF study',
+      'RLHF': 'alignment techniques — the training-loop end of the stack',
+      'Prompt Engineering': 'NexusGuard — the pivot that beat a fragile fine-tune',
+      'Transfer Learning': 'Severity Classifier \u00b7 Quantum ECG baselines',
+      'Qiskit': 'Quantum ECG — kernels, QSVM, feature maps',
+      'Quantum Kernels': 'Quantum ECG — physiology-aware feature map',
+      'QSVM': 'Quantum ECG classifier vs classical baselines',
+      'Hybrid Quantum-Classical': 'Quantum ECG — classical pre/post around quantum kernels',
+      'QNNs': 'quantum ML coursework &amp; experiments',
+      'Ollama': 'HIS — local Llama 3.1 \u00b7 NexusGuard deployment',
+      'ChromaDB': 'NexusGuard — 150-document policy RAG',
+      'Docker': 'HIS deployment \u00b7 NexusGuard',
+      'Nginx': 'HIS — reverse proxy + tunnel deployment',
+      'PostgreSQL': 'HIS — EHR of record, RBAC',
+      'Elasticsearch': 'HIS — BM25 arm of hybrid retrieval',
+      'Milvus': 'HIS — dense-vector arm of hybrid retrieval',
+      'Git / GitHub': 'every repo, every experiment',
+      'Jupyter': 'where every experiment starts',
+      'CUDA': 'QLoRA fine-tuning runs on 7B+ models',
+      'Linux': 'deployment target &amp; daily driver',
+      'REST APIs': 'HIS gateway \u00b7 NexusGuard endpoints'
+    };
+    document.querySelectorAll('[data-skill]').forEach(ch => {
+      const show = () => {
+        const k = ch.getAttribute('data-skill');
+        out.innerHTML = '<span style="color:#4de3ff;">\u25e2 TRACE // ' + k.toUpperCase() + '</span><span style="color:#565f6b;">\u2192</span><span style="color:#c7d0da;">' + (M[k] || 'core toolkit — used across the stack') + '</span>';
+      };
+      ch.addEventListener('pointerenter', show);
+      ch.addEventListener('focus', show);
+      ch.addEventListener('click', show);
+    });
+  }
+
+  // ---------- contact form ----------
+  _setupForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const name = document.getElementById('f-name');
+    const email = document.getElementById('f-email');
+    const subj = document.getElementById('f-subject');
+    const msg = document.getElementById('f-msg');
+    const send = document.getElementById('f-send');
+    const status = document.getElementById('form-status');
+    const mark = (el, bad) => { el.style.borderColor = bad ? 'rgba(255,107,107,0.75)' : 'rgba(236,233,224,0.16)'; };
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      let bad = false;
+      [name, subj, msg].forEach(el => { const b = !el.value.trim(); mark(el, b); bad = bad || b; });
+      const eb = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()); mark(email, eb); bad = bad || eb;
+      if (bad) {
+        if (status) { status.textContent = '\u26a0 Fill the flagged fields — all channels required.'; status.style.color = '#ff6b6b'; }
+        return;
+      }
+      if (status) { status.textContent = ''; }
+      send.disabled = true; send.style.opacity = '0.6'; send.textContent = 'TRANSMITTING\u2026';
+      setTimeout(() => {
+        if (this._disposed) return;
+        const url = 'mailto:adyanth.s@gmail.com?subject=' + encodeURIComponent('[Portfolio] ' + subj.value.trim()) + '&body=' + encodeURIComponent(msg.value.trim() + '\n\n\u2014 ' + name.value.trim() + ' \u00b7 ' + email.value.trim());
+        try { window.location.href = url; } catch (e) {}
+        form.style.display = 'none';
+        const done = document.getElementById('form-done'); if (done) done.style.display = 'flex';
+      }, 900);
+    });
+  }
+
+  // ---------- three.js ----------
+  _waitForThree() {
+    const tick = () => { if (this._disposed) return; if (window.THREE) this._initScene(); else setTimeout(tick, 60); };
+    tick();
+  }
+  _initScene() {
+    const THREE = window.THREE;
+    const canvas = document.getElementById('neural-canvas');
+    if (!canvas) return;
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' }); }
+    catch (e) { canvas.style.display = 'none'; return; }
+    this._renderer = renderer;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x08090b, 0.03);
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 240);
+    camera.position.set(0, 0, 27);
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const small = window.innerWidth < 700;
+    const NODES = small ? 84 : 132, RAD = 12;
+    const nodePos = [];
+    for (let i = 0; i < NODES; i++) {
+      const t = (i + 0.5) / NODES;
+      const inc = Math.acos(1 - 2 * t);
+      const az = Math.PI * (1 + Math.sqrt(5)) * i;
+      const r = RAD * (0.32 + 0.68 * Math.cbrt(Math.random()));
+      nodePos.push(new THREE.Vector3(r * Math.sin(inc) * Math.cos(az), r * Math.sin(inc) * Math.sin(az) * 0.84, r * Math.cos(inc)));
+    }
+    const cyan = new THREE.Color(0x4de3ff), violet = new THREE.Color(0x9d7bff), white = new THREE.Color(0xdff6ff);
+    const nodeColors = nodePos.map((p) => cyan.clone().lerp(violet, Math.min(1, (p.y + RAD) / (2 * RAD))).lerp(white, 0.12));
+
+    const gc = document.createElement('canvas'); gc.width = gc.height = 64;
+    const gx = gc.getContext('2d');
+    const grd = gx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grd.addColorStop(0, 'rgba(255,255,255,1)'); grd.addColorStop(0.22, 'rgba(190,242,255,0.9)'); grd.addColorStop(0.5, 'rgba(90,200,255,0.32)'); grd.addColorStop(1, 'rgba(0,0,0,0)');
+    gx.fillStyle = grd; gx.fillRect(0, 0, 64, 64);
+    const sprite = new THREE.CanvasTexture(gc);
+
+    const npGeo = new THREE.BufferGeometry();
+    const npPos = new Float32Array(NODES * 3), npCol = new Float32Array(NODES * 3);
+    for (let i = 0; i < NODES; i++) {
+      npPos[i * 3] = nodePos[i].x; npPos[i * 3 + 1] = nodePos[i].y; npPos[i * 3 + 2] = nodePos[i].z;
+      npCol[i * 3] = nodeColors[i].r; npCol[i * 3 + 1] = nodeColors[i].g; npCol[i * 3 + 2] = nodeColors[i].b;
+    }
+    npGeo.setAttribute('position', new THREE.BufferAttribute(npPos, 3));
+    npGeo.setAttribute('color', new THREE.BufferAttribute(npCol, 3));
+    const npMat = new THREE.PointsMaterial({ size: 1.05, map: sprite, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true });
+    group.add(new THREE.Points(npGeo, npMat));
+
+    const edges = []; const seen = new Set(); const K = 3;
+    for (let i = 0; i < NODES; i++) {
+      const d = [];
+      for (let j = 0; j < NODES; j++) if (i !== j) d.push([nodePos[i].distanceToSquared(nodePos[j]), j]);
+      d.sort((a, b) => a[0] - b[0]);
+      for (let n = 0; n < K; n++) { const j = d[n][1]; const key = i < j ? i + '_' + j : j + '_' + i; if (seen.has(key)) continue; seen.add(key); edges.push([i, j]); }
+    }
+    const eGeo = new THREE.BufferGeometry();
+    const ePos = new Float32Array(edges.length * 6), eCol = new Float32Array(edges.length * 6);
+    edges.forEach((e, k) => {
+      const a = nodePos[e[0]], b = nodePos[e[1]], ca = nodeColors[e[0]], cb = nodeColors[e[1]];
+      ePos[k * 6] = a.x; ePos[k * 6 + 1] = a.y; ePos[k * 6 + 2] = a.z; ePos[k * 6 + 3] = b.x; ePos[k * 6 + 4] = b.y; ePos[k * 6 + 5] = b.z;
+      eCol[k * 6] = ca.r * 0.42; eCol[k * 6 + 1] = ca.g * 0.42; eCol[k * 6 + 2] = ca.b * 0.42; eCol[k * 6 + 3] = cb.r * 0.42; eCol[k * 6 + 4] = cb.g * 0.42; eCol[k * 6 + 5] = cb.b * 0.42;
+    });
+    eGeo.setAttribute('position', new THREE.BufferAttribute(ePos, 3));
+    eGeo.setAttribute('color', new THREE.BufferAttribute(eCol, 3));
+    group.add(new THREE.LineSegments(eGeo, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending, depthWrite: false })));
+    const stat = document.getElementById('hud-stat');
+    if (stat) stat.textContent = 'Nodes \u00b7 ' + NODES + ' / Links \u00b7 ' + edges.length;
+
+    const PCOUNT = small ? 40 : 72; const pulses = [];
+    for (let k = 0; k < PCOUNT; k++) pulses.push({ e: (Math.random() * edges.length) | 0, t: Math.random(), spd: 0.18 + Math.random() * 0.5 });
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(PCOUNT * 3);
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({ size: 0.72, map: sprite, color: 0xc8f6ff, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true });
+    this._pulseMat = pMat;
+    group.add(new THREE.Points(pGeo, pMat));
+
+    this._nebMats = []; this._nebSprites = [];
+    [{ pos: [-24, 9, -20], scale: 50 }, { pos: [26, -5, -24], scale: 56 }, { pos: [2, -24, -28], scale: 46 }].forEach((d) => {
+      const m = new THREE.SpriteMaterial({ map: sprite, color: 0xffb24d, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, fog: false });
+      const s = new THREE.Sprite(m);
+      s.position.set(d.pos[0], d.pos[1], d.pos[2]);
+      s.scale.set(d.scale, d.scale, 1);
+      s.renderOrder = -1;
+      s.userData = { base: d.pos.slice(), ph: Math.random() * 6.28 };
+      scene.add(s);
+      this._nebMats.push(m); this._nebSprites.push(s);
+    });
+
+    const SF = small ? 200 : 360, sfGeo = new THREE.BufferGeometry(), sfPos = new Float32Array(SF * 3);
+    for (let i = 0; i < SF; i++) { const rr = 42 + Math.random() * 72, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1); sfPos[i * 3] = rr * Math.sin(ph) * Math.cos(th); sfPos[i * 3 + 1] = rr * Math.sin(ph) * Math.sin(th); sfPos[i * 3 + 2] = rr * Math.cos(ph); }
+    sfGeo.setAttribute('position', new THREE.BufferAttribute(sfPos, 3));
+    scene.add(new THREE.Points(sfGeo, new THREE.PointsMaterial({ size: 0.5, map: sprite, color: 0x7fa8d8, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending })));
+
+    const grid = new THREE.GridHelper(120, 48, 0x1c93ad, 0x0d5566);
+    grid.position.y = -15; grid.material.transparent = true; grid.material.opacity = 0.2;
+    scene.add(grid);
+    this._gridMat = grid.material;
+    this._fog = scene.fog;
+    this._applyMode(this._mode || 'FLUX');
+
+    const ret = document.getElementById('hud-reticle');
+    const clock = new THREE.Clock();
+    const mouse = { x: 0, y: 0 };
+    let velX = 0, velY = 0, dragging = false, lastX = 0, lastY = 0;
+    const onMove = (ev) => {
+      mouse.x = (ev.clientX / window.innerWidth) * 2 - 1; mouse.y = (ev.clientY / window.innerHeight) * 2 - 1;
+      if (ret && !this._prm) ret.style.transform = 'translate(calc(-50% + ' + (mouse.x * 16) + 'px), calc(-50% + ' + (mouse.y * 16) + 'px))';
+      if (dragging) { velY += (ev.clientX - lastX) * 0.00035; velX += (ev.clientY - lastY) * 0.00035; lastX = ev.clientX; lastY = ev.clientY; }
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    canvas.addEventListener('pointerdown', (ev) => { dragging = true; lastX = ev.clientX; lastY = ev.clientY; });
+    window.addEventListener('pointerup', () => { dragging = false; });
+    this._onResize = () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); };
+    window.addEventListener('resize', this._onResize);
+
+    const tmpA = new THREE.Vector3(), tmpB = new THREE.Vector3(), tmp = new THREE.Vector3();
+    const pAttr = pGeo.attributes.position;
+    let elapsed = 0;
+    const prm = this._prm;
+    const animate = () => {
+      if (this._disposed) return;
+      this._raf = requestAnimationFrame(animate);
+      let dt = clock.getDelta(); if (dt > 0.05) dt = 0.05; elapsed += dt;
+      const scrollP = this._scrollP || 0;
+      group.rotation.y += (prm ? 0.0004 : 0.0016) + velY; group.rotation.x += velX;
+      group.rotation.x = Math.max(-0.85, Math.min(0.85, group.rotation.x));
+      velY *= 0.94; velX *= 0.94;
+      if (!prm) {
+        camera.position.x += (mouse.x * 3.2 - camera.position.x) * 0.04;
+        camera.position.y += (-mouse.y * 2.2 - camera.position.y) * 0.04;
+      }
+      const targetZ = 27 - scrollP * 11;
+      camera.position.z += (targetZ - camera.position.z) * 0.06;
+      camera.lookAt(0, -scrollP * 1.5, 0);
+      grid.rotation.z = scrollP * 0.25;
+      if (!prm) npMat.size = 1.0 + Math.sin(elapsed * 1.5) * 0.12;
+      if (this._nebSprites) for (const s of this._nebSprites) { const b = s.userData.base; s.position.x = b[0] + Math.sin(elapsed * 0.11 + s.userData.ph) * 5; s.position.y = b[1] + Math.cos(elapsed * 0.09 + s.userData.ph) * 4; }
+      for (let k = 0; k < PCOUNT; k++) {
+        const pl = pulses[k]; pl.t += pl.spd * dt;
+        if (pl.t >= 1) { pl.t = 0; pl.e = (Math.random() * edges.length) | 0; }
+        const e = edges[pl.e]; tmpA.copy(nodePos[e[0]]); tmpB.copy(nodePos[e[1]]); tmp.copy(tmpA).lerp(tmpB, pl.t);
+        pPos[k * 3] = tmp.x; pPos[k * 3 + 1] = tmp.y; pPos[k * 3 + 2] = tmp.z;
+      }
+      pAttr.needsUpdate = true;
+      renderer.render(scene, camera);
+    };
+    animate();
+  }
+
+  // ---------- generic style-hover attribute support ----------
+  // The design encodes hover states as a `style-hover="..."` attribute on many
+  // elements (buttons, links) rather than CSS :hover rules. Apply them generically.
+  _setupHoverStyles() {
+    document.querySelectorAll('[style-hover]').forEach(el => {
+      const rest = el.getAttribute('style') || '';
+      const extra = el.getAttribute('style-hover');
+      el.addEventListener('pointerenter', () => { el.setAttribute('style', rest + ';' + extra); });
+      el.addEventListener('pointerleave', () => { el.setAttribute('style', rest); });
+    });
+  }
+  }
+  var __instance = new Component(props);
+  __instance.componentDidMount();
+  window.addEventListener('beforeunload', function(){ try { __instance.componentWillUnmount(); } catch(e){} });
+})();
+</script>
 </body>
 </html>
